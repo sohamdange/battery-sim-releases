@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Simulation Toolkit — Desktop Battery Pack Simulation</title>
+  <meta name="description" content="Model cell behaviour, configure pack geometry, and run drive-cycle simulations on your desktop. No cloud. No account required.">
+  <style>
+    :root {
+      --bg:          #0d1117;
+      --surface:     #161b22;
+      --surface-2:   #1c2128;
+      --border:      #30363d;
+      --text:        #e6edf3;
+      --text-muted:  #8b949e;
+      --accent:      #2563eb;
+      --accent-hover:#1d4ed8;
+      --accent-dim:  rgba(37,99,235,0.12);
+      --accent-ring: rgba(37,99,235,0.28);
+      --green:       #3fb950;
+      --green-dim:   rgba(63,185,80,0.12);
+      --green-ring:  rgba(63,185,80,0.25);
+      --radius:      10px;
+      --radius-lg:   16px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Nav ─────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 56px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .nav-logo svg { color: var(--accent); flex-shrink: 0; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+
+    /* ─── Buttons ─────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s, box-shadow .15s, transform .1s;
+      white-space: nowrap;
+      border: none;
+    }
+    .btn:active { transform: scale(.98); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    }
+    .btn-primary:hover { background: var(--accent-hover); box-shadow: 0 2px 8px rgba(37,99,235,.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { color: var(--text); background: var(--surface); }
+
+    .btn-lg { padding: 12px 28px; font-size: 15px; border-radius: 9px; }
+
+    /* ─── Layout helpers ──────────────────────── */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .section { padding: 84px 0; }
+
+    .section-eyebrow {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ─── Hero ────────────────────────────────── */
+    .hero-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 28px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green-dim);
+      border: 1px solid var(--green-ring);
+      border-radius: 100px;
+      padding: 4px 13px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      margin-bottom: 22px;
+    }
+
+    .hero-title {
+      font-size: 50px;
+      font-weight: 800;
+      letter-spacing: -.045em;
+      line-height: 1.07;
+      margin-bottom: 20px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .version-badge {
+      font-size: 12px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 4px 9px;
+    }
+
+    /* ─── Screenshot frame ────────────────────── */
+    .screenshot-frame {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.04);
+    }
+
+    .chrome-bar {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .screenshot-frame img { width: 100%; display: block; }
+
+    /* ─── Stats strip ─────────────────────────── */
+    .stats-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 28px;
+      display: flex;
+      justify-content: space-around;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-value {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -.025em;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .stat-label {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* ─── Capabilities ────────────────────────── */
+    .caps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 52px;
+    }
+
+    .cap-card {
+      background: var(--surface);
+      padding: 30px;
+      transition: background .15s;
+    }
+    .cap-card:hover { background: var(--surface-2); }
+
+    .cap-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-ring);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+
+    .cap-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      margin-bottom: 9px;
+    }
+
+    .cap-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ─── Screenshots section ─────────────────── */
+    .screenshots-bg {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 2px;
+      border-bottom: 1px solid var(--border);
+      margin: 40px 0 32px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      margin-bottom: -1px;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .tab-shot {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 48px rgba(0,0,0,.32);
+    }
+    .tab-shot img { width: 100%; display: block; }
+
+    .tab-caption {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ─── Audience ────────────────────────────── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .audience-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color .15s;
+    }
+    .audience-card:hover { border-color: var(--accent-ring); }
+
+    .audience-emoji {
+      font-size: 26px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .audience-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      margin-bottom: 9px;
+    }
+
+    .audience-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ─── Requirements ────────────────────────── */
+    .req-bg {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .req-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+    }
+
+    .req-check { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+
+    .req-label { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .req-detail { font-size: 13px; color: var(--text-muted); }
+
+    /* ─── Changelog ───────────────────────────── */
+    .changelog-list {
+      margin-top: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .changelog-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+    }
+
+    .changelog-ver {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-ring);
+      border-radius: 6px;
+      padding: 3px 11px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .changelog-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .changelog-notes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .changelog-notes li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      padding-left: 14px;
+      position: relative;
+    }
+    .changelog-notes li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    .changelog-more {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .changelog-more a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-ring);
+    }
+    .changelog-more a:hover { text-decoration-color: var(--accent); }
+
+    /* ─── Bottom CTA ──────────────────────────── */
+    .cta-bg {
+      background: linear-gradient(160deg, var(--accent-dim) 0%, transparent 55%);
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 88px 28px;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -.035em;
+      margin-bottom: 14px;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── Footer ──────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-link {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color .15s;
+    }
+    .footer-link:hover { color: var(--text); }
+
+    /* ─── Responsive ──────────────────────────── */
+    @media (max-width: 800px) {
+      .hero-wrap { grid-template-columns: 1fr; padding-top: 52px; gap: 44px; }
+      .hero-title { font-size: 36px; }
+      .caps-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .req-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 26px; }
+      .cta-title { font-size: 28px; }
+      nav { padding: 0 16px; }
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="7" width="16" height="10" rx="2"/>
+      <path d="M18 11h2a1 1 0 0 1 1 1v0a1 1 0 0 1-1 1h-2"/>
+    </svg>
+    Battery Simulation Toolkit
+  </div>
+  <div class="nav-links">
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#screenshots" class="nav-link">Screenshots</a>
+    <a href="#changelog" class="nav-link">Changelog</a>
+    <a id="nav-download" href="https://github.com/sohamdange/battery-sim-releases/releases/latest" class="btn btn-primary" style="margin-left:8px;">
+      Download
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div>
+    <div class="hero-eyebrow">
+      <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#3fb950"/></svg>
+      Windows · Free · No account required
+    </div>
+    <h1 class="hero-title">Battery pack simulation<br>for <em>engineers</em></h1>
+    <p class="hero-sub">
+      Model cell behaviour, configure pack geometry, and run drive-cycle simulations — entirely on your desktop. No cloud uploads. Your data stays on your machine.
+    </p>
+    <div class="hero-actions">
+      <a id="hero-download" href="https://github.com/sohamdange/battery-sim-releases/releases/latest" class="btn btn-primary btn-lg">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download for Windows
+      </a>
+      <span class="version-badge" id="hero-ver">v0.1.6</span>
+      <a href="https://github.com/sohamdange/battery-sim-releases/releases" class="btn btn-outline">All releases →</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="screenshot-frame">
+      <div class="chrome-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <img src="screenshots/dashboard.png" alt="Battery Simulation Toolkit — dashboard overview" loading="eager">
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-value">RC model</div>
+      <div class="stat-label">Equivalent-circuit accuracy</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">Per-cell</div>
+      <div class="stat-label">Individual cell resolution</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">HDF5</div>
+      <div class="stat-label">High-density result storage</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">Cython</div>
+      <div class="stat-label">Compiled solver for speed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">Local-first</div>
+      <div class="stat-label">No cloud, no account</div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<section id="features">
+  <div class="wrap section">
+    <div class="section-eyebrow">Capabilities</div>
+    <h2 class="section-title">Everything you need to simulate a battery pack</h2>
+    <p class="section-sub">From cell characterisation to pack-level drive-cycle analysis — all in one desktop application.</p>
+
+    <div class="caps-grid">
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="16" height="10" rx="2"/>
+            <path d="M18 11h2a1 1 0 0 1 1 1v0a1 1 0 0 1-1 1h-2"/>
+          </svg>
+        </div>
+        <div class="cap-title">Cell Library</div>
+        <div class="cap-desc">Import and manage a reusable catalogue of cell models. Define capacity, OCV curves, voltage bounds, and RC network parameters. Upload tabular RC data per temperature via CSV — cylindrical, prismatic, pouch, or coin form factors.</div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </div>
+        <div class="cap-title">Pack Builder</div>
+        <div class="cap-desc">Configure multi-cell packs with arbitrary series and parallel topology. Automatic busbar resistance calculation, geometry-aware cell classification, and full electrical property derivation from your selected cell model.</div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="cap-title">Drive Cycle Simulation</div>
+        <div class="cap-desc">Import standard (WLTP, UDDS) or custom drive cycles. Compose multi-step simulation schedules with subcycle extraction. Map drive cycles to calendar days across a full year for long-horizon mission profiles.</div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+          </svg>
+        </div>
+        <div class="cap-title">RC Equivalent-Circuit Solver</div>
+        <div class="cap-desc">KCL-based solver models every cell in the pack individually — no lumped approximations. Compiled with Cython for speed. Handles arbitrary topology including unbalanced parallel branches and mixed cell types within the same pack.</div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <div class="cap-title">Results &amp; Analysis</div>
+        <div class="cap-desc">Results written to HDF5: full voltage, current, state-of-charge, and temperature traces at both pack and per-cell resolution. Inspect plots directly in the app — pack level, cell level, spatial, and overlapping views with unit controls.</div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="cap-title">Offline &amp; Local-First</div>
+        <div class="cap-desc">No cloud, no internet required to run simulations. All cell models, pack configurations, drive cycles, and results are stored locally. Single installer — Python, runtimes, and all libraries are bundled. Nothing else to install.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots" class="screenshots-bg">
+  <div class="wrap section">
+    <div class="section-eyebrow">Screenshots</div>
+    <h2 class="section-title">See it in action</h2>
+    <p class="section-sub">A tour of the key workflows — from building your cell library to reviewing simulation results.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="dash">Dashboard</button>
+      <button class="tab-btn" data-tab="cells">Cell Library</button>
+      <button class="tab-btn" data-tab="sims">Simulations</button>
+      <button class="tab-btn" data-tab="results">Results</button>
+      <button class="tab-btn" data-tab="cycles">Cycle Builder</button>
+    </div>
+
+    <div id="tab-dash" class="tab-panel active">
+      <div class="tab-shot"><img src="screenshots/dashboard.png" alt="Dashboard overview with live stats"></div>
+      <p class="tab-caption">Home dashboard — simulation counts, cell and pack totals, and recent activity at a glance.</p>
+    </div>
+    <div id="tab-cells" class="tab-panel">
+      <div class="tab-shot"><img src="screenshots/cells.png" alt="Cell library showing multiple cell models"></div>
+      <p class="tab-caption">Cell Library — manage your full catalogue of characterised cells, filterable by form factor and sortable by any property.</p>
+    </div>
+    <div id="tab-sims" class="tab-panel">
+      <div class="tab-shot"><img src="screenshots/sim-library.png" alt="Simulation library with 31 completed runs"></div>
+      <p class="tab-caption">Simulation Library — track all past runs with status badges, End SOC, peak temperature, and one-click result access.</p>
+    </div>
+    <div id="tab-results" class="tab-panel">
+      <div class="tab-shot"><img src="screenshots/results.png" alt="Simulation results with SOC, temperature, and plots"></div>
+      <p class="tab-caption">Results — End SOC and peak temperature KPIs, followed by multi-level plots (pack, cell, spatial, overlapping) with unit controls.</p>
+    </div>
+    <div id="tab-cycles" class="tab-panel">
+      <div class="tab-shot"><img src="screenshots/drive-cycles.png" alt="Simulation cycle library with calendar rules"></div>
+      <p class="tab-caption">Cycle Builder — compose simulation scenarios from sub-cycles and drive cycles, then map them to calendar days for full-year runs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="wrap section">
+    <div class="section-eyebrow">Who it's for</div>
+    <h2 class="section-title">Built for people who work with battery systems</h2>
+    <p class="section-sub">Whether you're validating a cell model or sizing a pack for production, the Toolkit fits the workflow.</p>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="audience-emoji">⚡</span>
+        <div class="audience-title">Battery R&amp;D Engineers</div>
+        <div class="audience-desc">Validate equivalent-circuit cell models against measured characterisation data. Iterate on RC parameters and OCV curves without writing simulation code from scratch.</div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-emoji">🚗</span>
+        <div class="audience-title">EV Powertrain Teams</div>
+        <div class="audience-desc">Size and compare pack configurations against energy, voltage, and cost targets. Run real-world drive cycles before committing to a pack geometry or cell chemistry.</div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-emoji">🔬</span>
+        <div class="audience-title">Researchers &amp; Students</div>
+        <div class="audience-desc">Explore SOC trajectories, drive-cycle behaviour, and multi-chemistry pack responses without cloud infrastructure. All data stays on your machine for reproducible, citable work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM REQUIREMENTS -->
+<div class="req-bg">
+  <div class="wrap section" style="padding-top:64px;padding-bottom:64px;">
+    <div class="section-eyebrow">System Requirements</div>
+    <h2 class="section-title">Runs on any modern Windows PC</h2>
+
+    <div class="req-grid">
+      <div class="req-item">
+        <svg class="req-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <div>
+          <div class="req-label">Operating System</div>
+          <div class="req-detail">Windows 10 or Windows 11 (64-bit)</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <svg class="req-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <div>
+          <div class="req-label">Disk Space</div>
+          <div class="req-detail">~500 MB for the installer and application files</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <svg class="req-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <div>
+          <div class="req-label">Memory</div>
+          <div class="req-detail">4 GB RAM minimum — 8 GB recommended for large packs</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <svg class="req-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <div>
+          <div class="req-label">No dependencies</div>
+          <div class="req-detail">Python, runtimes, and all libraries bundled in the installer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGELOG -->
+<section id="changelog">
+  <div class="wrap section">
+    <div class="section-eyebrow">Changelog</div>
+    <h2 class="section-title">What's new</h2>
+
+    <div class="changelog-list">
+      <div class="changelog-item">
+        <span class="changelog-ver">v0.1.6</span>
+        <div>
+          <div class="changelog-date">June 2026 &nbsp;·&nbsp; Latest release</div>
+          <ul class="changelog-notes">
+            <li>Cell schema updated with references field for model provenance tracking</li>
+            <li>Cell preview modal redesigned with tabs, KPI strip, voltage visualisation, and RC grid navigation</li>
+            <li>Help page redesigned with improved flowchart, annotations, and content accuracy</li>
+            <li>UTC timestamp parsing fixed across all result views</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="changelog-more">
+      <a href="https://github.com/sohamdange/battery-sim-releases/releases" target="_blank">View full release history on GitHub →</a>
+    </p>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="cta-bg">
+  <div class="cta-inner">
+    <h2 class="cta-title">Ready to simulate your pack?</h2>
+    <p class="cta-sub">Download Battery Simulation Toolkit for Windows. Free. No account required.</p>
+    <div class="cta-actions">
+      <a id="cta-download" href="https://github.com/sohamdange/battery-sim-releases/releases/latest" class="btn btn-primary btn-lg">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download for Windows
+      </a>
+      <span class="version-badge" id="cta-ver">v0.1.6</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Battery Simulation Toolkit</span>
+    <div class="footer-links">
+      <a href="mailto:sohamdange@gmail.com" class="footer-link">Contact</a>
+      <a href="https://github.com/sohamdange/battery-sim-releases" class="footer-link" target="_blank">GitHub</a>
+      <a href="https://github.com/sohamdange/battery-sim-releases/releases" class="footer-link" target="_blank">Releases</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tab switcher
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Live version + direct download URL from GitHub Releases API
+  fetch('https://api.github.com/repos/sohamdange/battery-sim-releases/releases/latest')
+    .then(r => r.json())
+    .then(data => {
+      if (!data.tag_name) return;
+      const ver = data.tag_name;
+      document.getElementById('hero-ver').textContent = ver;
+      document.getElementById('cta-ver').textContent = ver;
+      const asset = data.assets && data.assets.find(a => a.name.endsWith('.exe'));
+      if (asset) {
+        ['#hero-download', '#cta-download', '#nav-download'].forEach(sel => {
+          const el = document.querySelector(sel);
+          if (el) el.href = asset.browser_download_url;
+        });
+      }
+    })
+    .catch(() => {});
+</script>
+
+</body>
+</html>
