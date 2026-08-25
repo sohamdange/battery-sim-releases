@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy &mdash; BatterySimSuite</title>
+<style>
+  :root {
+    --bg:          #0d1117;
+    --surface:     #161b22;
+    --surface-2:   #1c2128;
+    --border:      #30363d;
+    --text:        #e6edf3;
+    --text-muted:  #8b949e;
+    --accent:      #2563eb;
+    --green:       #3fb950;
+    --green-dim:   rgba(63,185,80,0.12);
+    --green-ring:  rgba(63,185,80,0.25);
+    --radius:      10px;
+    --radius-lg:   16px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+  a { color: var(--accent); }
+  .back {
+    display: inline-block; font-size: 14px; color: var(--text-muted);
+    text-decoration: none; margin-bottom: 32px;
+  }
+  .back:hover { color: var(--text); }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.5px; }
+  .updated { color: var(--text-muted); font-size: 14px; margin: 0 0 40px; }
+  h2 {
+    font-size: 19px; margin: 40px 0 12px; letter-spacing: -0.2px;
+    padding-top: 24px; border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p, li { color: #c9d4e0; font-size: 15.5px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--text); }
+  .callout {
+    background: var(--green-dim); border: 1px solid var(--green-ring);
+    border-radius: var(--radius); padding: 18px 20px; margin: 24px 0;
+  }
+  .callout p { margin: 0; color: #d7e6da; }
+  .callout strong { color: var(--green); }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14.5px; }
+  th, td {
+    text-align: left; padding: 10px 12px;
+    border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  th { color: var(--text-muted); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td { color: #c9d4e0; }
+  code {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 1px 5px; font-size: 13.5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  footer {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+    color: var(--text-muted); font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="./">&larr; BatterySimSuite</a>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated 24 August 2026</p>
+
+  <p>
+    BatterySimSuite is desktop software for battery pack simulation. This policy explains what
+    information it collects, why, and who else is involved. It is written to be read rather than
+    skimmed, and it describes what the software actually does.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Your simulation work never leaves your computer.</strong> Cells, packs, drive cycles,
+      schedules and results are stored in a folder on your own machine
+      (<code>BatterySimSuite</code> in your user directory). They are not uploaded, not backed up
+      to us, and not visible to us. The only thing the software sends anywhere is licence
+      information.
+    </p>
+  </div>
+
+  <h2>What is collected, and why</h2>
+
+  <table>
+    <thead>
+      <tr><th>Information</th><th>When</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Email address, and optionally your name and organisation</td>
+        <td>When you request a licence key</td>
+        <td>To send you the key, and to identify your licence if you contact support</td>
+      </tr>
+      <tr>
+        <td>Licence key</td>
+        <td>Each time the application starts</td>
+        <td>To confirm the licence is valid and has not expired</td>
+      </tr>
+      <tr>
+        <td>Hardware identifiers: network adapter address, disk serial number, processor ID, and Windows installation ID</td>
+        <td>Each time the application starts</td>
+        <td>To tie one licence to one computer, so that a key cannot be shared or resold</td>
+      </tr>
+      <tr>
+        <td>IP address and the time of each check</td>
+        <td>Each time the application starts</td>
+        <td>To detect misuse, such as a single key being used from many places at once</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The hardware identifiers are values your operating system already exposes to installed
+    software. They are stored so that the licence server can tell whether a later request comes
+    from the same machine. They are not used to identify you personally, and they are not combined
+    with anything else.
+  </p>
+
+  <h2>What is not collected</h2>
+
+  <ul>
+    <li>No simulation data, results, cell chemistry, pack designs or drive cycles</li>
+    <li>No file names, folder contents or anything else from your disk</li>
+    <li>No analytics, usage tracking, telemetry or crash reporting</li>
+    <li>No advertising identifiers, and no tracking across other websites or applications</li>
+  </ul>
+
+  <h2>Who else is involved</h2>
+
+  <p>Three services are used to run the licensing system. None of them receives your simulation work.</p>
+
+  <ul>
+    <li><strong>Railway</strong> hosts the licence server and its database, which holds your email address, licence key and the hardware identifiers described above.</li>
+    <li><strong>Google</strong> delivers the email containing your licence key, sent from a Gmail account.</li>
+    <li><strong>GitHub</strong> hosts the installer downloads and the update files. Downloading an installer or an update reaches GitHub directly.</li>
+  </ul>
+
+  <p>
+    Your information is not sold, rented, or shared for advertising, and it is not passed to anyone
+    beyond what is described here.
+  </p>
+
+  <h2>How long it is kept</h2>
+
+  <p>
+    Licence records are kept for as long as the licence is active, and for a period afterwards so
+    that renewals and support requests can be handled. Check-in records, which show when a licence
+    was verified and from where, are kept only as long as they are useful for detecting misuse.
+  </p>
+
+  <h2>Your data</h2>
+
+  <p>
+    You can ask for a copy of the information held about your licence, or for it to be deleted.
+    Deleting it also ends the licence, since the licence is the record. Email
+    <a href="mailto:soham.perpetual@gmail.com">soham.perpetual@gmail.com</a> and it will be handled.
+  </p>
+
+  <h2>Changes to this policy</h2>
+
+  <p>
+    If this policy changes, the date at the top will change with it. Material changes to what is
+    collected or who it is shared with will be noted on this page rather than made quietly.
+  </p>
+
+  <h2>Contact</h2>
+
+  <p>
+    BatterySimSuite is built and maintained by Soham Dange. Questions about this policy, or about
+    what the software does with any particular piece of information, can go to
+    <a href="mailto:soham.perpetual@gmail.com">soham.perpetual@gmail.com</a>.
+  </p>
+
+  <footer>
+    <a href="./">BatterySimSuite</a> &nbsp;&middot;&nbsp;
+    <a href="./terms.html">Terms of Service</a>
+  </footer>
+
+</div>
+</body>
+</html>

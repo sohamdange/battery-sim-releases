@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service &mdash; BatterySimSuite</title>
+<style>
+  :root {
+    --bg:          #0d1117;
+    --surface:     #161b22;
+    --surface-2:   #1c2128;
+    --border:      #30363d;
+    --text:        #e6edf3;
+    --text-muted:  #8b949e;
+    --accent:      #2563eb;
+    --amber-dim:   rgba(210,153,34,0.12);
+    --amber-ring:  rgba(210,153,34,0.30);
+    --amber:       #d29922;
+    --radius:      10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+  a { color: var(--accent); }
+  .back {
+    display: inline-block; font-size: 14px; color: var(--text-muted);
+    text-decoration: none; margin-bottom: 32px;
+  }
+  .back:hover { color: var(--text); }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.5px; }
+  .updated { color: var(--text-muted); font-size: 14px; margin: 0 0 40px; }
+  h2 {
+    font-size: 19px; margin: 40px 0 12px; letter-spacing: -0.2px;
+    padding-top: 24px; border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p, li { color: #c9d4e0; font-size: 15.5px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--text); }
+  .callout {
+    background: var(--amber-dim); border: 1px solid var(--amber-ring);
+    border-radius: var(--radius); padding: 18px 20px; margin: 24px 0;
+  }
+  .callout p { margin: 0; color: #e8ddc4; }
+  .callout strong { color: var(--amber); }
+  footer {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+    color: var(--text-muted); font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="./">&larr; BatterySimSuite</a>
+
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated 24 August 2026</p>
+
+  <p>
+    These terms cover the use of BatterySimSuite, desktop software for battery pack simulation
+    built and maintained by Soham Dange. Installing or using the software means accepting them.
+  </p>
+
+  <h2>Your licence</h2>
+
+  <p>
+    A licence key allows the software to be installed and used on <strong>one computer</strong>,
+    for the period shown on the key. The application records identifying details of that computer
+    the first time the key is activated, and checks them each time it starts.
+  </p>
+
+  <p>
+    If you change computers, or replace enough hardware that the machine is no longer recognised,
+    email <a href="mailto:soham.perpetual@gmail.com">soham.perpetual@gmail.com</a> and the licence
+    will be transferred. There is no charge for this.
+  </p>
+
+  <h2>Free licences</h2>
+
+  <p>
+    Licences are currently issued free of charge. A free licence carries the same terms as any
+    other, and the same absence of warranty described below. Free availability may end at any time;
+    a licence already issued will continue until the date on it.
+  </p>
+
+  <h2>What you may not do</h2>
+
+  <ul>
+    <li>Share, publish, sell or transfer a licence key to anyone else</li>
+    <li>Work around, disable or interfere with licence checking</li>
+    <li>Redistribute, repackage or resell the software</li>
+    <li>Decompile or reverse engineer it, except where law expressly permits this</li>
+  </ul>
+
+  <p>
+    A key found to be shared across multiple machines, or used to circumvent licensing, may be
+    revoked without refund or notice.
+  </p>
+
+  <h2>Simulation results</h2>
+
+  <div class="callout">
+    <p>
+      <strong>Results are estimates produced by a model, not measurements.</strong> Their accuracy
+      depends on the cell parameters, pack configuration and drive cycles you supply. Treat them as
+      one input to engineering judgement, and validate against testing before relying on them for
+      design decisions.
+    </p>
+  </div>
+
+  <h2>No warranty</h2>
+
+  <p>
+    The software is provided <strong>as is</strong>, without warranty of any kind, express or
+    implied, including any warranty of merchantability, fitness for a particular purpose, accuracy
+    of results, or uninterrupted operation. You use it at your own risk.
+  </p>
+
+  <h2>Limitation of liability</h2>
+
+  <p>
+    To the fullest extent permitted by law, the author is not liable for any indirect, incidental,
+    special or consequential loss arising from use of the software &mdash; including lost profits,
+    lost data, damaged equipment, or decisions made on the basis of simulation output. Where
+    liability cannot be excluded by law, it is limited to the amount you paid for the licence,
+    which for a free licence is nothing.
+  </p>
+
+  <h2>Availability</h2>
+
+  <p>
+    The licence server must be reachable for the software to verify a licence. It holds a
+    short-lived offline token so brief outages do not interrupt your work, but no guarantee is made
+    about uptime, and no liability is accepted for time when the service is unavailable.
+  </p>
+
+  <h2>Updates</h2>
+
+  <p>
+    The application can check for and install updates. Updates may change or remove features. You
+    are not required to install them, but support is offered for the current version.
+  </p>
+
+  <h2>Ending a licence</h2>
+
+  <p>
+    A licence ends when its expiry date passes, when you ask for it to be deleted, or if it is
+    revoked for a breach of these terms. When a licence ends the software stops running. Your
+    simulation files remain on your own computer and stay yours.
+  </p>
+
+  <h2>Changes to these terms</h2>
+
+  <p>
+    These terms may change; the date at the top will change with them. Continuing to use the
+    software after a change means accepting the revised terms.
+  </p>
+
+  <h2>Contact</h2>
+
+  <p>
+    Questions about these terms can go to
+    <a href="mailto:soham.perpetual@gmail.com">soham.perpetual@gmail.com</a>.
+  </p>
+
+  <footer>
+    <a href="./">BatterySimSuite</a> &nbsp;&middot;&nbsp;
+    <a href="./privacy.html">Privacy Policy</a>
+  </footer>
+
+</div>
+</body>
+</html>
