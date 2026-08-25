@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get a licence key &mdash; BatterySimSuite</title>
+<style>
+  :root {
+    --bg:          #0d1117;
+    --surface:     #161b22;
+    --surface-2:   #1c2128;
+    --border:      #30363d;
+    --text:        #e6edf3;
+    --text-muted:  #8b949e;
+    --accent:      #2563eb;
+    --accent-hover:#1d4ed8;
+    --accent-dim:  rgba(37,99,235,0.12);
+    --accent-ring: rgba(37,99,235,0.28);
+    --green:       #3fb950;
+    --green-dim:   rgba(63,185,80,0.12);
+    --green-ring:  rgba(63,185,80,0.25);
+    --amber:       #d29922;
+    --amber-dim:   rgba(210,153,34,0.12);
+    --amber-ring:  rgba(210,153,34,0.32);
+    --red:         #f85149;
+    --red-dim:     rgba(248,81,73,0.12);
+    --red-ring:    rgba(248,81,73,0.30);
+    --radius:      10px;
+    --radius-lg:   16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 56px 24px 96px; }
+  .back { display:inline-block; font-size:14px; color:var(--text-muted);
+          text-decoration:none; margin-bottom:36px; }
+  .back:hover { color: var(--text); }
+
+  h1 { font-size: 32px; line-height: 1.15; letter-spacing:-0.6px; margin-bottom: 12px; }
+  .lede { color: var(--text-muted); font-size: 16px; margin-bottom: 28px; }
+
+  .terms { background: var(--surface); border: 1px solid var(--border);
+           border-radius: var(--radius); padding: 18px 22px; margin-bottom: 28px; }
+  .terms ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .terms li { display: flex; gap: 10px; font-size: 14.5px; align-items: baseline; }
+  .terms .tick { color: var(--green); flex-shrink: 0; font-weight: 700; }
+  .terms strong { color: var(--text); }
+
+  form { background: var(--surface); border: 1px solid var(--border);
+         border-radius: var(--radius); padding: 22px; }
+  label { display:block; font-size:13px; color:var(--text-muted); margin-bottom:6px; }
+  label .opt { opacity:.7; }
+  input[type=email], input[type=text] {
+    width:100%; background: var(--surface-2); color: var(--text);
+    border:1px solid var(--border); border-radius:8px; padding:10px 12px;
+    font-size:15px; font-family:inherit; margin-bottom:16px;
+  }
+  input:focus { outline:none; border-color: var(--accent); box-shadow:0 0 0 3px var(--accent-ring); }
+  button {
+    width:100%; background: var(--accent); color:#fff; border:none;
+    border-radius:8px; padding:12px 18px; font-size:15px; font-weight:600;
+    font-family:inherit; cursor:pointer;
+  }
+  button:hover:not(:disabled) { background: var(--accent-hover); }
+  button:disabled { opacity:.55; cursor:default; }
+
+  .note { border-radius: var(--radius); padding:16px 18px; margin-top:20px;
+          font-size:14px; display:none; }
+  .note.show { display:block; }
+  .note.ok    { background:var(--green-dim); border:1px solid var(--green-ring); }
+  .note.warn  { background:var(--amber-dim); border:1px solid var(--amber-ring); }
+  .note.error { background:var(--red-dim);   border:1px solid var(--red-ring); color:#ffd7d4; }
+  .note h3 { font-size:15px; margin-bottom:6px; }
+  .note.ok h3    { color: var(--green); }
+  .note.warn h3  { color: var(--amber); }
+  .note.error h3 { color: var(--red); }
+  .note p { color:#c9d4e0; }
+  .note p + p { margin-top:8px; }
+  .note code { background:rgba(255,255,255,.06); border-radius:4px; padding:1px 5px;
+               font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; }
+
+  .after { margin-top:30px; font-size:13.5px; color:var(--text-muted); }
+  .after h2 { font-size:14px; color:var(--text); margin-bottom:8px; letter-spacing:.01em; }
+  .after ol { padding-left:20px; display:flex; flex-direction:column; gap:6px; }
+  footer { margin-top:44px; padding-top:22px; border-top:1px solid var(--border);
+           font-size:13px; color:var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="./">&larr; BatterySimSuite</a>
+
+  <h1>Get a licence key</h1>
+  <p class="lede">
+    Enter your email and a key will be sent to you. There is nothing to pay and no
+    card required.
+  </p>
+
+  <div class="terms">
+    <ul>
+      <li><span class="tick">&check;</span><span>A <strong>full licence</strong> &mdash; every feature, no trial limitations</span></li>
+      <li><span class="tick">&check;</span><span><strong>Free</strong>, valid for <strong>one year</strong></span></li>
+      <li><span class="tick">&check;</span><span>Runs on <strong>one computer</strong>, locked to the first machine it is activated on</span></li>
+      <li><span class="tick">&check;</span><span>Need longer, or a different machine? <strong>Email support</strong> and it will be extended or moved &mdash; no charge</span></li>
+    </ul>
+  </div>
+
+  <form id="f" novalidate>
+    <label for="email">Email address</label>
+    <input id="email" type="email" required autocomplete="email" placeholder="you@company.com">
+
+    <label for="name">Name <span class="opt">(optional)</span></label>
+    <input id="name" type="text" autocomplete="name" placeholder="Your name">
+
+    <label for="org">Organisation <span class="opt">(optional)</span></label>
+    <input id="org" type="text" autocomplete="organization" placeholder="University or company">
+
+    <button id="submit" type="submit">Send me a licence key</button>
+  </form>
+
+  <div class="note" id="note"></div>
+
+  <div class="after">
+    <h2>Once the key arrives</h2>
+    <ol>
+      <li><a href="./">Download and install BatterySimSuite</a>.</li>
+      <li>Open the app and enter <em>this same email address</em> together with the key.</li>
+      <li>The key locks to that computer, so activate it on the machine you intend to use.</li>
+    </ol>
+  </div>
+
+  <footer>
+    <a href="./">BatterySimSuite</a> &nbsp;&middot;&nbsp;
+    <a href="./privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
+    <a href="./terms.html">Terms of Service</a>
+    <p style="margin-top:10px">Your address is used to send the key and identify your licence. Nothing else.</p>
+  </footer>
+
+</div>
+
+<script>
+  const API = "https://earnest-patience-production-3919.up.railway.app/public/request-trial";
+  const form = document.getElementById("f");
+  const btn = document.getElementById("submit");
+  const note = document.getElementById("note");
+
+  function show(kind, title, body) {
+    note.className = "note show " + kind;
+    note.innerHTML = "<h3>" + title + "</h3>" + body;
+  }
+
+  // Mapped from the reasons the API actually returns, so the message matches the
+  // real cause rather than a generic failure.
+  function messageFor(data) {
+    switch (data.reason) {
+      case "invalid_email":
+        return ["error", "That address does not look right",
+                "<p>Check it for typos and try again.</p>"];
+      case "disposable_email":
+        return ["error", "Disposable addresses are not accepted",
+                "<p>Please use an address you will still have in a year &mdash; the key is tied " +
+                "to it, and it is how you would reach support.</p>"];
+      case "rate_limited": {
+        const mins = Math.ceil((data.retry_after_seconds || 3600) / 60);
+        return ["warn", "Too many requests",
+                "<p>Please try again in about " + mins + " minute" + (mins === 1 ? "" : "s") + ".</p>"];
+      }
+      default:
+        return ["error", "Something went wrong",
+                "<p>Please try again, or email " +
+                "<a href='mailto:soham.perpetual@gmail.com'>soham.perpetual@gmail.com</a>.</p>"];
+    }
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    note.className = "note";
+
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          name: document.getElementById("name").value.trim() || null,
+          organisation: document.getElementById("org").value.trim() || null,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        form.style.display = "none";
+        const esc = email.replace(/[<>&]/g, "");
+        show("ok", "Check your inbox",
+          "<p>" + (data.resent
+            ? "A key had already been issued to <strong>" + esc + "</strong>, so it has been sent again."
+            : "Your licence key is on its way to <strong>" + esc + "</strong>.") + "</p>" +
+          "<p><strong>Look in your spam or junk folder.</strong> The email comes from " +
+          "<code>soham.perpetual@gmail.com</code>, and because it is sent from an ordinary " +
+          "Gmail account rather than a company domain, filters often put it there. Marking it " +
+          "as not spam helps future messages reach you.</p>" +
+          "<p>Nothing after a few minutes? Submit the form again &mdash; it will re-send the " +
+          "same key rather than issue a new one.</p>");
+      } else {
+        const [kind, title, body] = messageFor(data);
+        show(kind, title, body);
+        btn.disabled = false;
+        btn.textContent = "Send me a licence key";
+      }
+    } catch (err) {
+      show("error", "Could not reach the licence server",
+        "<p>Check your connection and try again. If it keeps failing, email " +
+        "<a href='mailto:soham.perpetual@gmail.com'>soham.perpetual@gmail.com</a> and a key " +
+        "will be sent by hand.</p>");
+      btn.disabled = false;
+      btn.textContent = "Send me a licence key";
+    }
+  });
+</script>
+</body>
+</html>
