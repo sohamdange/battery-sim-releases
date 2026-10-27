@@ -1,0 +1,132 @@
+# Reviews every pull request for changes to protected details:
+#   - Licence page / licence server: WARNING. The check passes, but the PR gets a
+#     pinned warning comment and a "licence-page-change" label.
+#   - Release/download links, site ownership (CNAME, Google verification,
+#     workflows, README) and the pages' Content-Security-Policy: FAILURE. The
+#     check goes red.
+#
+# Uses pull_request_target so the check always runs the copy of this workflow on
+# main: a PR from a fork cannot edit or delete it to skip the check. It never
+# checks out or runs PR code, it only reads the list of changed files and diffs
+# through the API.
+name: Guard protected changes
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check changed files and lines
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+
+          licence_files='^docs/get-licence\.html$'
+          licence_lines='railway\.app|licen[cs]e|request-trial'
+          blocked_files='^(docs/CNAME|docs/google[0-9a-f]*\.html|\.github/.*|README\.md)$'
+          blocked_lines='api\.github\.com|/releases|browser_download_url|\.exe|\.sig\b|google-site-verification|Content-Security-Policy'
+
+          marker='<!-- licence-guard -->'
+          label='licence-page-change'
+
+          gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | {filename, status, patch: (.patch // null)}' > files.jsonl
+
+          # Changed lines (added or removed) of a patch that match a pattern.
+          changed_lines() {
+            grep -E '^[+-]' | grep -Ev '^(\+\+\+|---)' | grep -Ei "$1" | head -5 || true
+          }
+          as_diff() { printf '  ```diff\n%s\n  ```\n' "$(sed 's/^/  /' <<<"$1")"; }
+
+          licence=""
+          blocked=""
+          while IFS= read -r row; do
+            name=$(jq -r .filename <<<"$row")
+            status=$(jq -r .status <<<"$row")
+            patch=$(jq -r '.patch // ""' <<<"$row")
+
+            if grep -Eq "$licence_files" <<<"$name"; then
+              licence+="- \`$name\` ($status): **the licence page itself**"$'\n'
+              echo "::warning file=$name,title=Licence page changed::This PR changes the licence page."
+              continue
+            fi
+            if grep -Eq "$blocked_files" <<<"$name"; then
+              blocked+="- \`$name\` ($status): protected file"$'\n'
+              continue
+            fi
+            if [ -z "$patch" ]; then
+              # Raster images have no diff and cannot carry scripts; SVGs can, so they stay flagged.
+              if grep -Eiq '\.(png|jpe?g|gif|webp|ico)$' <<<"$name"; then continue; fi
+              blocked+="- \`$name\` ($status): diff too large or binary, review by hand"$'\n'
+              continue
+            fi
+
+            hits=$(changed_lines "$licence_lines" <<<"$patch")
+            if [ -n "$hits" ]; then
+              licence+="- \`$name\` ($status): lines mention the licence server or licences"$'\n'"$(as_diff "$hits")"$'\n'
+              echo "::warning file=$name,title=Licence details changed::Lines mentioning the licence server or licences changed."
+            fi
+            hits=$(changed_lines "$blocked_lines" <<<"$patch")
+            if [ -n "$hits" ]; then
+              blocked+="- \`$name\` ($status): lines mention release/download details"$'\n'"$(as_diff "$hits")"$'\n'
+            fi
+          done < files.jsonl
+
+          # Pinned warning comment: create or update one comment so pushes don't pile up duplicates.
+          comment_id=$(gh api --paginate "repos/$REPO/issues/$PR/comments" \
+            --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -1 || true)
+
+          if [ -n "$licence" ]; then
+            body=$(printf '%s\n## ⚠️ This pull request changes the licence page\n\n%s\n%s\n\n%s' \
+              "$marker" \
+              "It touches the licence page or licence-server details. Check these changes carefully before merging:" \
+              "$licence" \
+              "_This comment updates automatically when the PR changes._")
+            if [ -n "$comment_id" ]; then
+              gh api -X PATCH "repos/$REPO/issues/comments/$comment_id" -f body="$body" > /dev/null
+            else
+              gh api -X POST "repos/$REPO/issues/$PR/comments" -f body="$body" > /dev/null
+            fi
+            gh label create "$label" --repo "$REPO" --color D93F0B \
+              --description "PR changes the licence page or licence-server details" --force > /dev/null
+            gh api -X POST "repos/$REPO/issues/$PR/labels" -f "labels[]=$label" > /dev/null
+          elif [ -n "$comment_id" ]; then
+            body=$(printf '%s\n~~⚠️ This pull request changes the licence page~~\n\n%s' "$marker" \
+              "✅ The latest version of this PR no longer changes the licence page.")
+            gh api -X PATCH "repos/$REPO/issues/comments/$comment_id" -f body="$body" > /dev/null
+            gh api -X DELETE "repos/$REPO/issues/$PR/labels/$label" > /dev/null 2>&1 || true
+          fi
+
+          {
+            if [ -n "$licence" ]; then
+              echo "## ⚠️ Licence page changes (warning)"
+              echo
+              printf '%s\n' "$licence"
+            fi
+            if [ -n "$blocked" ]; then
+              echo "## ❌ Release / site-ownership changes (blocked)"
+              echo
+              echo "Do not merge unless the owner has reviewed these on purpose."
+              echo
+              printf '%s\n' "$blocked"
+            fi
+            if [ -z "$licence$blocked" ]; then
+              echo "No licence, release or site-ownership changes found."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -n "$blocked" ]; then
+            echo "::error::This PR changes release or site-ownership details. See the job summary."
+            exit 1
+          fi
