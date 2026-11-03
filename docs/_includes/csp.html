@@ -1,0 +1,20 @@
+{%- comment -%}
+  Content-Security-Policy for every page of the site. Kept in this one file so
+  that the guard workflow flags any change to it.
+
+  Pages opt into extra hosts with front matter:
+    csp: licence   -> may call the licence server (the key request form)
+  Every other page may call the GitHub API only, which releases.js uses to show
+  the latest version and direct download links.
+
+  Scripts, styles, fonts, images and video must all come from this site.
+  To embed hosted video later (e.g. YouTube), add its host to frame-src here.
+{%- endcomment -%}
+{%- if page.csp == "licence" -%}
+  {%- assign csp_connect = "https://earnest-patience-production-3919.up.railway.app" -%}
+  {%- assign csp_form = "'self'" -%}
+{%- else -%}
+  {%- assign csp_connect = "https://api.github.com" -%}
+  {%- assign csp_form = "'none'" -%}
+{%- endif -%}
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; connect-src {{ csp_connect }}; frame-src 'none'; base-uri 'none'; form-action {{ csp_form }}">
