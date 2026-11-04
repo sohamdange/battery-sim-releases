@@ -1,0 +1,17 @@
+# Release and download links used by the site's pages.
+# Kept in this one file so that the guard workflow flags any change to it.
+# Pages use these as no-JavaScript fallbacks; assets/js/release-info.js replaces
+# them with direct file links once it has read the GitHub Releases API.
+
+repo_url: https://github.com/sohamdange/battery-sim-releases
+
+# Every release, app and add-on.
+releases_page: https://github.com/sohamdange/battery-sim-releases/releases
+
+# GitHub's "latest" release. This must always be an APP release (v* tag):
+# when publishing an add-on, untick "Set as the latest release".
+latest_app_page: https://github.com/sohamdange/battery-sim-releases/releases/latest
+
+# Tag prefixes that tell app and add-on releases apart.
+app_tag_prefix: "v"
+addon_tag_prefix: "addon-"
