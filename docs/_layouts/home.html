@@ -1,0 +1,187 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="circuit-bg" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <a class="hero-badge" href="{{ '/features/electrochemical/' | relative_url }}">
+        <span class="hero-badge-tag">New</span>
+        Electrochemical Models Add-On: SPM, SPMe, DFN
+        {% include icon.html name="arrow" px=14 %}
+      </a>
+      <h1 class="hero-title">Simulate every cell<br><span class="charge-text">before you build the pack.</span></h1>
+      <p class="hero-lede">
+        Battery Sim Suite is a Windows desktop app for battery pack simulation. Build cell models,
+        lay out packs, run real drive cycles and inspect every cell, with equivalent-circuit or
+        electrochemical engines, entirely on your own computer.
+      </p>
+      <div class="actions">
+        <a class="btn btn-charge btn-lg" href="{{ '/downloads/' | relative_url }}">
+          {% include icon.html name="download" px=18 %}Download for Windows
+        </a>
+        <a class="btn btn-ghost btn-lg" href="{{ '/features/' | relative_url }}">Explore features {% include icon.html name="arrow" px=16 %}</a>
+      </div>
+      <p class="hero-meta mono">
+        <span class="pill"><span class="pill-dot"></span><span data-rel="app-version">Latest release</span></span>
+        <span>Windows 10 / 11 &middot; 64-bit</span>
+        <span>Free licence key</span>
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <figure class="frame frame--glow">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Battery Sim Suite</span></div>
+        <img src="{{ '/screenshots/dashboard.png' | relative_url }}" alt="Battery Sim Suite home dashboard showing simulation counts, cell and pack totals, and recent activity" width="1440" height="900">
+      </figure>
+
+      <div class="soc-widget" aria-hidden="true">
+        <div class="soc-head mono"><span>PACK SOC</span><span class="soc-value" data-count-to="82">82</span><span class="soc-unit">%</span></div>
+        <div class="soc-bar"><span></span></div>
+        <svg class="soc-trace" viewBox="0 0 220 56" preserveAspectRatio="none">
+          <path class="trace-line" d="M0 12 L22 14 L34 22 L48 18 L62 30 L80 26 L96 36 L112 31 L130 40 L150 37 L168 46 L190 43 L220 50"/>
+        </svg>
+        <div class="soc-foot mono"><span>WLTP</span><span>96s12p</span><span>RC</span></div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="hero-current" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <path class="wire" d="M0 30 H340 L360 10 H560 L580 50 H820 L840 30 H1200"/>
+    <path class="wire-flow" d="M0 30 H340 L360 10 H560 L580 50 H820 L840 30 H1200"/>
+  </svg>
+</section>
+
+<section class="stats" aria-label="At a glance">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><span class="stat-value">Per-cell</span><span class="stat-label">Every cell solved individually, no lumped pack</span></div>
+    <div class="stat reveal"><span class="stat-value">5 engines</span><span class="stat-label">RC equivalent-circuit, plus Thevenin, SPM, SPMe and DFN</span></div>
+    <div class="stat reveal"><span class="stat-value">365 days</span><span class="stat-label">Calendar-mapped drive cycles for year-long runs</span></div>
+    <div class="stat reveal"><span class="stat-value">0 uploads</span><span class="stat-label">No cloud, no telemetry, results stay local</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Workflow</p>
+      <h2 class="section-title">From one cell to a full mission profile</h2>
+      <p class="section-lede">Four steps, one application. Every stage stores reusable building blocks, so the next study starts from your library, not from scratch.</p>
+    </div>
+    <ol class="flow">
+      <li class="flow-step reveal">
+        <span class="flow-num mono">01</span>
+        <span class="flow-icon">{% include icon.html name="cell" px=22 %}</span>
+        <h3>Characterise cells</h3>
+        <p>Capacity, OCV curves, voltage limits and RC parameters per temperature, imported from CSV.</p>
+        <a class="link-arrow" href="{{ '/features/' | relative_url }}#cells">Cell Library {% include icon.html name="arrow" px=14 %}</a>
+      </li>
+      <li class="flow-step reveal">
+        <span class="flow-num mono">02</span>
+        <span class="flow-icon">{% include icon.html name="pack" px=22 %}</span>
+        <h3>Build the pack</h3>
+        <p>Any series and parallel layout, busbar resistance and geometry-aware cell placement.</p>
+        <a class="link-arrow" href="{{ '/features/' | relative_url }}#packs">Pack Builder {% include icon.html name="arrow" px=14 %}</a>
+      </li>
+      <li class="flow-step reveal">
+        <span class="flow-num mono">03</span>
+        <span class="flow-icon">{% include icon.html name="cycle" px=22 %}</span>
+        <h3>Compose the cycle</h3>
+        <p>WLTP, UDDS or your own drive cycles, chained into schedules and mapped onto a calendar year.</p>
+        <a class="link-arrow" href="{{ '/features/' | relative_url }}#cycles">Cycle Builder {% include icon.html name="arrow" px=14 %}</a>
+      </li>
+      <li class="flow-step reveal">
+        <span class="flow-num mono">04</span>
+        <span class="flow-icon">{% include icon.html name="chart" px=22 %}</span>
+        <h3>Inspect every cell</h3>
+        <p>Voltage, current, SOC and temperature at pack and cell level, in plots built into the app.</p>
+        <a class="link-arrow" href="{{ '/features/' | relative_url }}#results">Results {% include icon.html name="arrow" px=14 %}</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// New add-on</p>
+      <h2 class="section-title">Electrochemical models, one click away</h2>
+      <p class="section-lede">
+        The Electrochemical Models Add-On adds four PyBaMM-based cell engines to Battery Sim Suite.
+        Start with a fast equivalent-circuit model, and step up to physics-based models when you need
+        to see what happens inside the electrodes.
+      </p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Free with any active licence</li>
+        <li>{% include icon.html name="check" px=18 %}Installs from <strong>Settings &rarr; About</strong>, or from a file on offline computers</li>
+        <li>{% include icon.html name="check" px=18 %}Every download checked against its size and SHA-256 checksum</li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-charge" href="{{ '/features/electrochemical/' | relative_url }}">Meet the engines {% include icon.html name="arrow" px=16 %}</a>
+        <a class="btn btn-ghost" href="{{ '/downloads/' | relative_url }}#addon">Get the add-on</a>
+      </div>
+    </div>
+    <div class="engines reveal" role="list">
+      {%- for engine in site.data.engines %}
+      <div class="engine-row" role="listitem">
+        <div class="engine-name"><span class="mono">{{ engine.short }}</span><span>{{ engine.name }}</span></div>
+        <div class="engine-meter" aria-label="Fidelity {{ engine.fidelity }} of 5">
+          {%- for i in (1..5) %}<span class="{% if i <= engine.fidelity %}on{% endif %}"></span>{% endfor -%}
+        </div>
+      </div>
+      {%- endfor %}
+      <p class="engines-key mono"><span>Faster</span><span class="engines-key-line"></span><span>More physics</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tour">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Tour</p>
+      <h2 class="section-title">See it in action</h2>
+      <p class="section-lede">The main screens, from your cell library to simulation results.</p>
+    </div>
+    {% include screenshot-tabs.html %}
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Who it's for</p>
+      <h2 class="section-title">Built for people who work with battery systems</h2>
+    </div>
+    <div class="cards cards--3">
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="flask" %}</span>
+        <h3>Battery R&amp;D engineers</h3>
+        <p>Check cell models against measured characterisation data. Adjust RC parameters and OCV curves, or compare against SPM and DFN, without writing simulation code.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="bolt" %}</span>
+        <h3>EV and storage teams</h3>
+        <p>Compare pack layouts against energy and voltage targets. Run real drive cycles and year-long calendars before committing to a geometry or chemistry.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="doc" %}</span>
+        <h3>Researchers and students</h3>
+        <p>Explore SOC trajectories, cell-to-cell spread and model fidelity on your own machine. Every input stays in a local library, so studies are easy to reproduce.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+  <div class="local reveal">
+    <span class="local-icon">{% include icon.html name="lock" px=28 %}</span>
+    <div>
+      <h2>Local-first, by design</h2>
+      <p>Cells, packs, drive cycles and results are stored on your computer and never uploaded. Simulations run without an internet connection. The only thing the app sends anywhere is licence information, as described in the <a href="{{ '/legal/privacy/' | relative_url }}">privacy policy</a>.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+{% include cta.html %}

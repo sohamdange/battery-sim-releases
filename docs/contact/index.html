@@ -1,0 +1,104 @@
+---
+title: Contact
+description: Get in touch about Battery Sim Suite support, licences, the Electrochemical Models Add-On, collaborations or feedback.
+eyebrow: "// Contact"
+hero_title: Get in touch
+hero_lede: Battery Sim Suite is built and maintained by Soham Dange, so every message is read by the person who wrote the software.
+---
+{%- capture support_body -%}App version (Settings > About):
+Windows version:
+
+What happened:
+
+What you expected:
+
+Steps to reproduce:
+{%- endcapture -%}
+{%- capture licence_body -%}Email the licence was issued to:
+
+What you need (transfer to a new computer / extension / other):
+{%- endcapture -%}
+{%- capture addon_body -%}App version (Settings > About):
+Add-on version:
+Installed online or from file:
+
+Question or problem:
+{%- endcapture -%}
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="email-hero reveal">
+      <span class="card-icon">{% include icon.html name="mail" %}</span>
+      <div>
+        <p class="mono muted">EMAIL</p>
+        <a class="email-big" href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" data-copy="{{ site.contact_email }}" hidden>{% include icon.html name="copy" px=16 %}<span>Copy</span></button>
+    </div>
+
+    <h2 class="section-title section-title--sm reveal">What is it about?</h2>
+    <p class="muted reveal">Each button opens a new email with a subject and a short checklist filled in.</p>
+    <div class="cards cards--3">
+      <a class="card card--link reveal" href="mailto:{{ site.contact_email }}?subject={{ 'Support: ' | uri_escape }}&amp;body={{ support_body | uri_escape }}">
+        <span class="card-icon">{% include icon.html name="bug" %}</span>
+        <h3>Support or a bug</h3>
+        <p>Something does not work as expected, an install or update failed, or a result looks wrong.</p>
+        <span class="link-arrow">Email support {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="mailto:{{ site.contact_email }}?subject={{ 'Licence: ' | uri_escape }}&amp;body={{ licence_body | uri_escape }}">
+        <span class="card-icon">{% include icon.html name="key" %}</span>
+        <h3>Licence</h3>
+        <p>Move a licence to a new computer, extend one, or ask about licensing. New keys come instantly from the licence page.</p>
+        <span class="link-arrow">Email about a licence {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="mailto:{{ site.contact_email }}?subject={{ 'Electrochemical add-on: ' | uri_escape }}&amp;body={{ addon_body | uri_escape }}">
+        <span class="card-icon">{% include icon.html name="flask" %}</span>
+        <h3>Electrochemical add-on</h3>
+        <p>Installing the add-on, choosing an engine, or a request for the source code of its open-source parts.</p>
+        <span class="link-arrow">Email about the add-on {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="mailto:{{ site.contact_email }}?subject={{ 'Collaboration / case study' | uri_escape }}">
+        <span class="card-icon">{% include icon.html name="doc" %}</span>
+        <h3>Collaboration or case study</h3>
+        <p>Using Battery Sim Suite in research, teaching or a product team, and happy to share how?</p>
+        <span class="link-arrow">Start a conversation {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="mailto:{{ site.contact_email }}?subject={{ 'Feedback' | uri_escape }}">
+        <span class="card-icon">{% include icon.html name="chat" %}</span>
+        <h3>Feedback or a feature idea</h3>
+        <p>What would make the app more useful for your work? Ideas shape what gets built next.</p>
+        <span class="link-arrow">Send feedback {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="mailto:{{ site.contact_email }}?subject={{ 'Privacy request' | uri_escape }}">
+        <span class="card-icon">{% include icon.html name="shield" %}</span>
+        <h3>Privacy request</h3>
+        <p>Ask for a copy of the information held about your licence, or for it to be deleted.</p>
+        <span class="link-arrow">Make a request {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// Faster answers</p>
+      <h2 class="section-title">What to include</h2>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}<span>Your <strong>app version</strong>, from Settings &rarr; About</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span>Your <strong>Windows version</strong>, for example Windows 11 24H2</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span>The <strong>email address your licence was issued to</strong>, for licence questions</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span>What happened, what you expected, and a <strong>screenshot</strong> of any error</span></li>
+      </ul>
+    </div>
+    <div class="split-copy reveal">
+      <p class="eyebrow">// Before you write</p>
+      <h2 class="section-title">You might find it here</h2>
+      <ul class="link-list">
+        <li><a href="{{ '/downloads/' | relative_url }}#help">Install, update and Repair help {% include icon.html name="arrow" px=14 %}</a></li>
+        <li><a href="{{ '/licence/' | relative_url }}">Licence FAQ {% include icon.html name="arrow" px=14 %}</a></li>
+        <li><a href="{{ '/features/electrochemical/' | relative_url }}">Installing the add-on {% include icon.html name="arrow" px=14 %}</a></li>
+        <li><a href="{{ '/legal/privacy/' | relative_url }}">What data is collected {% include icon.html name="arrow" px=14 %}</a></li>
+      </ul>
+    </div>
+  </div>
+</section>

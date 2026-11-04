@@ -1,0 +1,138 @@
+---
+title: Downloads
+description: Download Battery Sim Suite for Windows and the Electrochemical Models Add-On, with checksums, system requirements, install help and release history.
+eyebrow: "// Downloads"
+hero_title: Download Battery Sim Suite
+hero_lede: One Windows installer with everything bundled, plus the free Electrochemical Models Add-On.
+live_release: true
+---
+<section class="section section--tight">
+  <div class="wrap download-grid">
+    <article class="download-card download-card--primary reveal" id="app">
+      <div class="download-head">
+        <span class="card-icon">{% include icon.html name="windows" %}</span>
+        <div>
+          <h2>Battery Sim Suite for Windows</h2>
+          <p class="mono muted"><span data-rel="app-version">Latest version</span> <span data-rel="app-date" hidden></span></p>
+        </div>
+      </div>
+      <p>The desktop app with the RC equivalent-circuit solver, cell and pack libraries, the cycle builder and results analysis. Python and all runtimes are bundled.</p>
+      <div class="actions">
+        <a class="btn btn-charge btn-lg" data-rel="app-download" href="{{ site.data.release_links.latest_app_page }}">
+          {% include icon.html name="download" px=18 %}Download installer
+        </a>
+        <span class="mono muted" data-rel="app-size" hidden></span>
+      </div>
+      <p class="muted small">Windows 10 or 11, 64-bit. A free <a href="{{ '/licence/' | relative_url }}">licence key</a> is needed to run it.</p>
+      <div class="release-notes">
+        <h3 class="mono">What's new in this release</h3>
+        <ul data-rel="app-notes" hidden></ul>
+        <p class="muted small"><a data-rel="app-page" href="{{ site.data.release_links.latest_app_page }}">Full release notes on GitHub</a></p>
+      </div>
+    </article>
+
+    <article class="download-card reveal" id="addon">
+      <div class="download-head">
+        <span class="card-icon">{% include icon.html name="flask" %}</span>
+        <div>
+          <h2 data-rel="addon-name">Electrochemical Models Add-On</h2>
+          <p class="mono muted">Thevenin &middot; SPM &middot; SPMe &middot; DFN <span data-rel="addon-date" hidden></span></p>
+        </div>
+      </div>
+      <div class="callout callout--charge">
+        <p><strong>Recommended:</strong> install it from inside the app. Open <strong>Settings &rarr; About</strong> and click <strong>Install</strong>.</p>
+      </div>
+      <p>For offline computers, download both files below, copy them across, and use <strong>Install from file</strong>.</p>
+      <div class="actions">
+        <a class="btn btn-ghost" data-rel="addon-download" href="{{ site.data.release_links.releases_page }}">{% include icon.html name="download" px=16 %}Add-on zip <span class="mono muted" data-rel="addon-size" hidden></span></a>
+        <a class="btn btn-ghost" data-rel="addon-listing" href="{{ site.data.release_links.releases_page }}">{% include icon.html name="doc" px=16 %}Listing (.json)</a>
+      </div>
+      <details class="checksums">
+        <summary>SHA-256 checksums</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>File</th><th>Size</th><th>SHA-256</th></tr></thead>
+            <tbody data-rel="addon-checksums">
+              <tr><td colspan="3">Checksums are listed on the <a data-rel="addon-page" href="{{ site.data.release_links.releases_page }}">add-on release page</a>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted small">The add-on is not code-signed. Compare these checksums to confirm a copy is genuine.</p>
+      </details>
+      <p class="muted small">
+        Needs an app version that uses add-on protocol 11 (the release after 0.1.8 or later). Free with any active licence.
+        Source code for the bundled LGPL parts: <a data-rel="addon-sources" href="{{ site.data.release_links.releases_page }}">sources zip</a>.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section section--panel" id="requirements">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// System requirements</p>
+      <h2 class="section-title">Runs on any modern Windows PC</h2>
+    </div>
+    <div class="req-grid">
+      <div class="req reveal"><span class="mono">OS</span><strong>Windows 10 or 11</strong><small>64-bit</small></div>
+      <div class="req reveal"><span class="mono">DISK</span><strong>~500 MB</strong><small>for the app, more with the add-on</small></div>
+      <div class="req reveal"><span class="mono">MEMORY</span><strong>4 GB RAM</strong><small>8 GB recommended for large packs</small></div>
+      <div class="req reveal"><span class="mono">RUNTIME</span><strong>None needed</strong><small>Python and libraries bundled</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="help">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Help</p>
+      <h2 class="section-title">Install, activate, update</h2>
+    </div>
+    <div class="cards cards--3">
+      <article class="card reveal">
+        <span class="flow-num mono">01</span>
+        <h3>Install</h3>
+        <p>Run the installer and follow the steps. Everything the app needs is included, so there is nothing else to set up.</p>
+      </article>
+      <article class="card reveal">
+        <span class="flow-num mono">02</span>
+        <h3>Activate</h3>
+        <p><a href="{{ '/licence/' | relative_url }}">Request a free key</a>, then enter it in the app with the same email address. The key locks to the first computer it is activated on.</p>
+      </article>
+      <article class="card reveal">
+        <span class="flow-num mono">03</span>
+        <h3>Stay up to date</h3>
+        <p>The app tells you when an update is available and installs it for you. Your data is backed up automatically first.</p>
+      </article>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>An update did not finish. What now?</summary>
+        <p>Open the app and use the <strong>Repair</strong> option, which re-runs the installer from inside the app. Since 0.1.8 the app also detects when only part of an update was installed. You can also download the installer above and run it over the existing installation.</p>
+      </details>
+      <details>
+        <summary>Where is my data stored?</summary>
+        <p>In a <code>BatterySimSuite</code> folder in your Windows user directory. Nothing is uploaded. See the <a href="{{ '/legal/privacy/' | relative_url }}">privacy policy</a>.</p>
+      </details>
+      <details>
+        <summary>Can I use it without internet?</summary>
+        <p>Simulations run fully offline. The licence is checked when the app starts, and a short-lived offline token covers brief outages. The add-on can be installed from a file on offline computers.</p>
+      </details>
+      <details>
+        <summary>Something else is wrong</summary>
+        <p><a href="{{ '/contact/' | relative_url }}">Get in touch</a> with your app version (Settings &rarr; About), your Windows version and what happened.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--panel" id="history">
+  <div class="wrap wrap--narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Release history</p>
+      <h2 class="section-title">What's changed</h2>
+    </div>
+    <ol class="history" data-rel="history" hidden></ol>
+    <p class="center"><a class="btn btn-ghost" href="{{ site.data.release_links.releases_page }}">{% include icon.html name="github" px=16 %}All releases on GitHub</a></p>
+  </div>
+</section>

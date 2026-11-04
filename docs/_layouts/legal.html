@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<section class="page-hero page-hero--compact">
+  <div class="circuit-bg" aria-hidden="true"></div>
+  <div class="wrap wrap--narrow">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ '/legal/' | relative_url }}">Legal</a>
+      <span aria-hidden="true">/</span>
+      <span>{{ page.title }}</span>
+    </nav>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if page.updated %}<p class="updated">Last updated {{ page.updated }}</p>{% endif %}
+  </div>
+</section>
+<section class="section section--tight">
+  <div class="wrap wrap--narrow prose">
+    {{ content }}
+  </div>
+</section>

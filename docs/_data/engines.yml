@@ -1,0 +1,34 @@
+# Cell engines provided by the Electrochemical Models Add-On.
+# fidelity is a qualitative 1-5 scale used for the meter graphic.
+- short: ECM
+  name: Thevenin
+  fidelity: 2
+  summary: >-
+    Equivalent-circuit model: open-circuit voltage, a series resistance and
+    RC pairs. The fastest add-on engine.
+  resolves: Terminal voltage from OCV, ohmic drop and RC polarisation
+  use: Long drive cycles, year-long calendars and large parameter sweeps
+- short: SPM
+  name: Single Particle Model
+  fidelity: 3
+  summary: >-
+    Each electrode is represented by a single spherical particle with
+    lithium diffusion in the solid. Electrolyte effects are neglected.
+  resolves: Solid-phase diffusion and electrode surface concentration
+  use: Low to moderate C-rates where electrolyte limits are small
+- short: SPMe
+  name: SPM with electrolyte
+  fidelity: 4
+  summary: >-
+    Extends the SPM with electrolyte concentration and potential, which
+    matter more as current rises.
+  resolves: Solid diffusion plus electrolyte transport losses
+  use: Higher currents and fast-charge studies, at modest extra cost
+- short: DFN
+  name: Doyle-Fuller-Newman
+  fidelity: 5
+  summary: >-
+    The pseudo-two-dimensional (P2D) model: particles across the electrode
+    thickness and full electrolyte transport. The highest fidelity engine.
+  resolves: Through-thickness concentration and potential in both phases
+  use: Reference results, validation and detailed electrode studies

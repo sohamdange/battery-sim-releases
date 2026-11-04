@@ -1,0 +1,43 @@
+title: Battery Sim Suite
+tagline: Battery pack simulation for engineers
+description: >-
+  Windows desktop app for battery pack simulation. Equivalent-circuit and
+  electrochemical cell models, per-cell resolution and real drive cycles,
+  all running on your own computer.
+url: https://sohamdange.github.io
+baseurl: /battery-sim-releases
+lang: en_GB
+author: Soham Dange
+contact_email: soham.perpetual@gmail.com
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Case studies: one Markdown file per study in _case_studies/.
+# Copy _case_studies/example-template.md to start a new one.
+collections:
+  case_studies:
+    output: true
+    permalink: /case-studies/:name/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: page }
+  - scope: { path: "", type: case_studies }
+    values: { layout: case-study }
+
+# Turn the Case Studies page on in the header and footer once the first
+# study is published.
+show_case_studies: false
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

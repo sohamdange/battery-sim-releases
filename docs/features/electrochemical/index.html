@@ -1,0 +1,97 @@
+---
+title: Electrochemical Models Add-On
+description: Four PyBaMM-based cell engines for Battery Sim Suite (Thevenin, SPM, SPMe and DFN), free with any active licence.
+eyebrow: "// Add-on"
+hero_title: Electrochemical Models Add-On
+hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside Battery Sim Suite. Free with any active licence.
+---
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="addon-strip reveal">
+      <div><span class="mono">ENGINES</span><strong>4</strong></div>
+      <div><span class="mono">PRICE</span><strong>Free</strong><small>with any active licence</small></div>
+      <div><span class="mono">INSTALL</span><strong>Settings &rarr; About</strong><small>or from a file, offline</small></div>
+      <div><span class="mono">REQUIRES</span><strong>App after 0.1.8</strong><small>add-on protocol 11</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// The engines</p>
+      <h2 class="section-title">Choose the physics each study needs</h2>
+      <p class="section-lede">Each step adds physical detail and costs more compute. A common pattern is to explore with a fast model and confirm the cases that matter with a more detailed one.</p>
+    </div>
+
+    <div class="engine-ladder">
+      {%- for engine in site.data.engines %}
+      <article class="engine-step reveal">
+        <div class="engine-step-head">
+          <span class="engine-tag mono">{{ engine.short }}</span>
+          <h3>{{ engine.name }}</h3>
+          <div class="engine-meter" aria-label="Fidelity {{ engine.fidelity }} of 5">
+            {%- for i in (1..5) %}<span class="{% if i <= engine.fidelity %}on{% endif %}"></span>{% endfor -%}
+          </div>
+        </div>
+        <p>{{ engine.summary }}</p>
+        <dl class="engine-facts">
+          <div><dt>Resolves</dt><dd>{{ engine.resolves }}</dd></div>
+          <div><dt>Good for</dt><dd>{{ engine.use }}</dd></div>
+        </dl>
+      </article>
+      {%- endfor %}
+    </div>
+    <p class="engines-key engines-key--wide mono reveal"><span>Faster</span><span class="engines-key-line"></span><span>More physics</span></p>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// Install</p>
+      <h2 class="section-title">Installs from inside the app</h2>
+      <ol class="steps">
+        <li><strong>Open Settings &rarr; About</strong> in Battery Sim Suite.</li>
+        <li><strong>Click Install.</strong> The app downloads the add-on and checks it before unpacking.</li>
+        <li><strong>Pick an engine</strong> when you set up a simulation.</li>
+      </ol>
+      <p class="muted">The app refuses any file whose size, checksum or listing does not match.</p>
+    </div>
+    <div class="split-copy reveal">
+      <p class="eyebrow">// Offline computers</p>
+      <h2 class="section-title">No internet? Install from a file</h2>
+      <ol class="steps">
+        <li><strong>On a connected computer</strong>, download the add-on zip and its <code>.json</code> listing from the <a href="{{ '/downloads/' | relative_url }}#addon">Downloads page</a>.</li>
+        <li><strong>Copy both files</strong> to the offline computer.</li>
+        <li><strong>Choose Install from file</strong> in Settings &rarr; About and select both.</li>
+      </ol>
+      <p class="muted">The add-on is not code-signed. The SHA-256 checksums on the Downloads page are how to confirm a copy is genuine.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cards cards--3">
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="key" %}</span>
+        <h3>Free with your licence</h3>
+        <p>There is nothing extra to buy or activate. Any active licence key covers the add-on.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="refresh" %}</span>
+        <h3>Matched to your app</h3>
+        <p>Add-on 11.0 is for app versions that use add-on protocol 11, starting with the release after 0.1.8. Update the app first if Install is not offered.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="doc" %}</span>
+        <h3>Open-source inside</h3>
+        <p>The add-on bundles open-source software, including PyBaMM and CasADi, each under its own licence. See the <a href="{{ '/legal/open-source/' | relative_url }}">open-source notices</a>.</p>
+      </article>
+    </div>
+    <p class="fineprint reveal">Uses <a href="https://pybamm.org">PyBaMM</a>; not affiliated with or endorsed by the PyBaMM team.</p>
+  </div>
+</section>
+
+{% include cta.html %}
