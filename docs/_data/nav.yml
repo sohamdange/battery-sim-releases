@@ -1,0 +1,13 @@
+# Header navigation. Case studies are added automatically when
+# show_case_studies is true in _config.yml.
+main:
+  - title: Features
+    url: /features/
+  - title: Electrochemical
+    url: /features/electrochemical/
+  - title: Downloads
+    url: /downloads/
+  - title: Licence
+    url: /licence/
+  - title: Contact
+    url: /contact/

@@ -1,0 +1,223 @@
+---
+title: Features
+description: Cell library, pack builder, drive-cycle schedules, a per-cell RC solver, electrochemical engines and built-in results analysis, all in one Windows desktop app.
+eyebrow: "// Features"
+hero_title: Everything you need to simulate a battery pack
+hero_lede: From cell characterisation to year-long pack missions, in one desktop application that keeps your data on your own computer.
+---
+<nav class="subnav" aria-label="On this page">
+  <div class="wrap subnav-inner">
+    <a href="#cells">Cells</a>
+    <a href="#packs">Packs</a>
+    <a href="#cycles">Cycles</a>
+    <a href="#solver">Solver</a>
+    <a href="#simulations">Simulations</a>
+    <a href="#results">Results</a>
+    <a href="#engines">Engines</a>
+    <a href="#platform">Platform</a>
+  </div>
+</nav>
+
+<section class="section feature" id="cells">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// 01 &middot; Cell Library</p>
+      <h2 class="section-title">A reusable catalogue of characterised cells</h2>
+      <p class="section-lede">Define each cell once and reuse it in every pack and study.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Capacity, OCV curve, voltage limits and RC network parameters</li>
+        <li>{% include icon.html name="check" px=18 %}Tabular RC data per temperature, uploaded from CSV</li>
+        <li>{% include icon.html name="check" px=18 %}Cylindrical, prismatic, pouch and coin form factors</li>
+        <li>{% include icon.html name="check" px=18 %}A references field to record where each model came from</li>
+        <li>{% include icon.html name="check" px=18 %}Cell preview with tabs, a KPI strip, voltage plots and an RC parameter grid</li>
+        <li>{% include icon.html name="check" px=18 %}Search, sort by any property and filter by form factor</li>
+      </ul>
+    </div>
+    <figure class="frame reveal">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Cell Library</span></div>
+      <img src="{{ '/screenshots/cells.png' | relative_url }}" alt="Cell library table listing several cell models" loading="lazy" width="1440" height="900">
+    </figure>
+  </div>
+</section>
+
+<section class="section section--panel feature" id="packs">
+  <div class="wrap split split--flip">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// 02 &middot; Pack Builder</p>
+      <h2 class="section-title">Any series and parallel layout</h2>
+      <p class="section-lede">Configure multi-cell packs and let the app work out the electrical properties from your chosen cell model.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Arbitrary series and parallel topology</li>
+        <li>{% include icon.html name="check" px=18 %}Automatic busbar resistance calculation</li>
+        <li>{% include icon.html name="check" px=18 %}Geometry-aware cell classification</li>
+        <li>{% include icon.html name="check" px=18 %}Pack electrical properties derived from the selected cell</li>
+        <li>{% include icon.html name="check" px=18 %}Pack Library with search, sorting and form-factor filter</li>
+      </ul>
+    </div>
+    <div class="pack-viz reveal" aria-hidden="true">
+      <div class="pack-grid">
+        {%- for i in (1..48) %}<span></span>{% endfor -%}
+      </div>
+      <div class="pack-label mono"><span>12s4p</span><span>busbar R auto</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section feature" id="cycles">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// 03 &middot; Drive cycles &amp; schedules</p>
+      <h2 class="section-title">Real cycles, mapped onto a real year</h2>
+      <p class="section-lede">Go beyond a single drive cycle. Compose the way a pack is actually used, day by day.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Standard cycles such as WLTP and UDDS, or your own</li>
+        <li>{% include icon.html name="check" px=18 %}Multi-step schedules with sub-cycle extraction</li>
+        <li>{% include icon.html name="check" px=18 %}Calendar rules that map cycles to days across a full year</li>
+        <li>{% include icon.html name="check" px=18 %}Sub-cycle, drive-cycle and simulation-cycle libraries with search and sorting</li>
+      </ul>
+    </div>
+    <figure class="frame reveal">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Cycle Builder</span></div>
+      <img src="{{ '/screenshots/drive-cycles.png' | relative_url }}" alt="Simulation cycle library with calendar rules" loading="lazy" width="1440" height="900">
+    </figure>
+  </div>
+</section>
+
+<section class="section section--panel feature" id="solver">
+  <div class="wrap split split--flip">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// 04 &middot; RC equivalent-circuit solver</p>
+      <h2 class="section-title">Every cell, solved individually</h2>
+      <p class="section-lede">A KCL-based solver models each cell in the pack on its own, with no lumped approximation.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Per-cell current, voltage, SOC and temperature</li>
+        <li>{% include icon.html name="check" px=18 %}Handles unbalanced parallel branches</li>
+        <li>{% include icon.html name="check" px=18 %}Mixed cell types within the same pack</li>
+        <li>{% include icon.html name="check" px=18 %}Compiled with Cython for speed</li>
+      </ul>
+    </div>
+    <div class="circuit-viz reveal" aria-hidden="true">
+      <svg viewBox="0 0 360 200">
+        <path class="cv-wire" d="M20 100 H70 M110 100 H140 M190 100 H210 M260 100 H290 M290 100 V60 H320 M290 100 V140 H320"/>
+        <path class="cv-flow" d="M20 100 H70 M110 100 H140 M190 100 H210 M260 100 H290"/>
+        <rect class="cv-part" x="70" y="88" width="40" height="24" rx="3"/>
+        <text class="cv-text" x="90" y="80">R0</text>
+        <rect class="cv-part" x="140" y="88" width="50" height="24" rx="3"/>
+        <path class="cv-wire" d="M140 100 V70 H190 V100 M140 100 V130 H190 V100"/>
+        <text class="cv-text" x="165" y="62">R1 &#8741; C1</text>
+        <rect class="cv-part" x="210" y="88" width="50" height="24" rx="3"/>
+        <path class="cv-wire" d="M210 100 V70 H260 V100 M210 100 V130 H260 V100"/>
+        <text class="cv-text" x="235" y="62">R2 &#8741; C2</text>
+        <circle class="cv-node" cx="20" cy="100" r="6"/>
+        <text class="cv-text" x="20" y="128">OCV(SOC,T)</text>
+        <text class="cv-text cv-accent" x="330" y="104">V</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section feature" id="simulations">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// 05 &middot; Simulation Library</p>
+      <h2 class="section-title">Every run, tracked</h2>
+      <p class="section-lede">Run studies, follow their progress and come back to any result later.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Status badges and progress bars for running simulations</li>
+        <li>{% include icon.html name="check" px=18 %}End SOC and peak temperature in the list</li>
+        <li>{% include icon.html name="check" px=18 %}Clickable rows that open results directly</li>
+        <li>{% include icon.html name="check" px=18 %}Readable simulation logs with trigger descriptions</li>
+      </ul>
+    </div>
+    <figure class="frame reveal">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Simulations</span></div>
+      <img src="{{ '/screenshots/sim-library.png' | relative_url }}" alt="Simulation library listing completed runs with status badges" loading="lazy" width="1440" height="900">
+    </figure>
+  </div>
+</section>
+
+<section class="section section--panel feature" id="results">
+  <div class="wrap split split--flip">
+    <div class="split-copy reveal">
+      <p class="eyebrow">// 06 &middot; Results &amp; analysis</p>
+      <h2 class="section-title">From pack totals to a single cell</h2>
+      <p class="section-lede">Full traces are stored in HDF5 and plotted inside the app, without exporting anything.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}Voltage, current, SOC and temperature traces</li>
+        <li>{% include icon.html name="check" px=18 %}Pack-level, cell-level, spatial and overlapping views</li>
+        <li>{% include icon.html name="check" px=18 %}End SOC and peak temperature summaries</li>
+        <li>{% include icon.html name="check" px=18 %}Unit controls on every plot</li>
+      </ul>
+    </div>
+    <figure class="frame reveal">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Results</span></div>
+      <img src="{{ '/screenshots/results.png' | relative_url }}" alt="Simulation results with SOC and temperature summaries and plots" loading="lazy" width="1440" height="900">
+    </figure>
+  </div>
+</section>
+
+<section class="section feature" id="engines">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// 07 &middot; Electrochemical Models Add-On</p>
+      <h2 class="section-title">Four more cell engines, from Thevenin to DFN</h2>
+      <p class="section-lede">A free add-on brings PyBaMM-based engines into the same workflow, so you can trade speed for physical detail study by study.</p>
+    </div>
+    <div class="cards cards--4">
+      {%- for engine in site.data.engines %}
+      <article class="card engine-card reveal">
+        <span class="engine-tag mono">{{ engine.short }}</span>
+        <h3>{{ engine.name }}</h3>
+        <p>{{ engine.summary }}</p>
+        <div class="engine-meter" aria-label="Fidelity {{ engine.fidelity }} of 5">
+          {%- for i in (1..5) %}<span class="{% if i <= engine.fidelity %}on{% endif %}"></span>{% endfor -%}
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+    <p class="center reveal"><a class="btn btn-ghost" href="{{ '/features/electrochemical/' | relative_url }}">About the add-on {% include icon.html name="arrow" px=16 %}</a></p>
+  </div>
+</section>
+
+<section class="section section--panel feature" id="platform">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// 08 &middot; Platform</p>
+      <h2 class="section-title">A desktop app that looks after itself</h2>
+    </div>
+    <div class="cards cards--3">
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="lock" %}</span>
+        <h3>Offline and local-first</h3>
+        <p>No cloud, and no internet needed to run simulations. Every model, configuration and result is stored on your computer.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="windows" %}</span>
+        <h3>One installer</h3>
+        <p>Python, runtimes and every library are bundled. There is nothing else to install on Windows 10 or 11.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="refresh" %}</span>
+        <h3>Safe in-app updates</h3>
+        <p>Updates are signature-checked before they install, wait for the simulation engine to stop, and detect a half-finished update.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="shield" %}</span>
+        <h3>Repair, built in</h3>
+        <p>If an update does not finish, a Repair option re-runs the installer from inside the app.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="doc" %}</span>
+        <h3>Automatic backups</h3>
+        <p>Your data is backed up automatically when the app changes version, before anything new touches it.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="key" %}</span>
+        <h3>Clear licensing</h3>
+        <p>The expiry date is shown in Settings with advance warning, and a licence-server outage is never mistaken for an invalid key.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% include cta.html %}

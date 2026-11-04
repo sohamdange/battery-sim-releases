@@ -1,0 +1,27 @@
+# Screenshots used in the tour on the home page and on the Features page.
+# Replace the files in docs/screenshots/ to update them.
+- id: dashboard
+  tab: Dashboard
+  image: /screenshots/dashboard.png
+  alt: Home dashboard with simulation counts, cell and pack totals, and recent activity
+  caption: Home dashboard. Simulation counts, cell and pack totals, and recent activity at a glance.
+- id: cells
+  tab: Cell Library
+  image: /screenshots/cells.png
+  alt: Cell library table listing several cell models
+  caption: Cell Library. Your catalogue of characterised cells, filterable by form factor and sortable by any property.
+- id: sims
+  tab: Simulations
+  image: /screenshots/sim-library.png
+  alt: Simulation library listing completed runs with status badges
+  caption: Simulation Library. Every past run with status, end SOC, peak temperature and one-click access to results.
+- id: results
+  tab: Results
+  image: /screenshots/results.png
+  alt: Simulation results with SOC and temperature summaries and plots
+  caption: Results. End SOC and peak temperature, then pack, cell, spatial and overlapping plots with unit controls.
+- id: cycles
+  tab: Cycle Builder
+  image: /screenshots/drive-cycles.png
+  alt: Simulation cycle library with calendar rules
+  caption: Cycle Builder. Compose scenarios from sub-cycles and drive cycles, then map them to calendar days.

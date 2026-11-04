@@ -1,0 +1,26 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+      {% include logo.html %}
+      <span class="brand-name">Battery Sim <span>Suite</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+      <span class="nav-toggle-open">{% include icon.html name="menu" px=22 %}</span>
+      <span class="nav-toggle-close">{% include icon.html name="close" px=22 %}</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        {%- for item in site.data.nav.main %}
+        {%- assign item_url = item.url | relative_url %}
+        <li><a href="{{ item_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {%- endfor %}
+        {%- if site.show_case_studies %}
+        <li><a href="{{ '/case-studies/' | relative_url }}"{% if page.url == '/case-studies/' %} aria-current="page"{% endif %}>Case studies</a></li>
+        {%- endif %}
+      </ul>
+      <a class="btn btn-charge btn-sm" href="{{ '/downloads/' | relative_url }}">
+        {% include icon.html name="download" px=16 %}Download
+      </a>
+    </nav>
+  </div>
+</header>

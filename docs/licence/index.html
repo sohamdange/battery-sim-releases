@@ -1,0 +1,106 @@
+---
+title: Get a licence key
+description: Request a free Battery Sim Suite licence key. A full licence, valid for one year on one computer, sent to your email in a few seconds.
+csp: licence
+---
+<section class="page-hero page-hero--licence">
+  <div class="circuit-bg" aria-hidden="true"></div>
+  <div class="wrap licence-grid">
+    <div class="licence-copy">
+      <p class="eyebrow">// Licence</p>
+      <h1 class="page-title">Get a free licence key</h1>
+      <p class="page-lede">Enter your email and a key will be sent to you. There is nothing to pay and no card required.</p>
+      <ul class="checks">
+        <li>{% include icon.html name="check" px=18 %}<span>A <strong>full licence</strong>. Every feature, including the Electrochemical Models Add-On, with no trial limits</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span><strong>Free</strong>, valid for <strong>one year</strong></span></li>
+        <li>{% include icon.html name="check" px=18 %}<span>Runs on <strong>one computer</strong>, locked to the first machine it is activated on</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span>Need longer, or a different machine? <a href="{{ '/contact/' | relative_url }}">Get in touch</a> and it will be extended or moved, at no charge</span></li>
+      </ul>
+    </div>
+
+    <div class="licence-panel">
+      <form class="licence-form" id="licence-form" novalidate>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" type="email" required autocomplete="email" placeholder="you@company.com">
+        </div>
+        <div class="field">
+          <label for="name">Name <span class="opt">(optional)</span></label>
+          <input id="name" type="text" autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="org">Organisation <span class="opt">(optional)</span></label>
+          <input id="org" type="text" autocomplete="organization" placeholder="University or company">
+        </div>
+        <button class="btn btn-charge btn-lg btn-block" id="licence-submit" type="submit">{% include icon.html name="key" px=18 %}<span>Send me a licence key</span></button>
+        <p class="muted small">Your address is used to send the key and identify your licence. Nothing else. See the <a href="{{ '/legal/privacy/' | relative_url }}">privacy policy</a>.</p>
+      </form>
+      <div class="note" id="licence-note" role="status" aria-live="polite" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Activation</p>
+      <h2 class="section-title">Once the key arrives</h2>
+    </div>
+    <ol class="flow flow--3">
+      <li class="flow-step reveal">
+        <span class="flow-num mono">01</span>
+        <h3>Install the app</h3>
+        <p><a href="{{ '/downloads/' | relative_url }}">Download Battery Sim Suite</a> and run the installer.</p>
+      </li>
+      <li class="flow-step reveal">
+        <span class="flow-num mono">02</span>
+        <h3>Enter the key</h3>
+        <p>Open the app and enter <em>this same email address</em> together with the key.</p>
+      </li>
+      <li class="flow-step reveal">
+        <span class="flow-num mono">03</span>
+        <h3>On the right machine</h3>
+        <p>The key locks to that computer, so activate it on the machine you intend to use.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap wrap--narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Questions</p>
+      <h2 class="section-title">Licence FAQ</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Is it really free?</summary>
+        <p>Yes. Licences are currently issued free of charge, and carry the same terms as any other. Free availability may end at some point, but a licence already issued continues until the date on it. See the <a href="{{ '/legal/terms/' | relative_url }}">terms</a>.</p>
+      </details>
+      <details>
+        <summary>The email has not arrived</summary>
+        <p>Look in your spam or junk folder first. The key comes from <code>{{ site.contact_email }}</code>, an ordinary Gmail account, so filters often catch it. If nothing arrives after a few minutes, submit the form again. It re-sends the same key rather than issuing a new one.</p>
+      </details>
+      <details>
+        <summary>I have a new computer</summary>
+        <p>Email <a href="mailto:{{ site.contact_email }}?subject=Licence%20transfer">{{ site.contact_email }}</a> from the address the licence was issued to, and it will be moved at no charge.</p>
+      </details>
+      <details>
+        <summary>What happens when it expires?</summary>
+        <p>The app warns you in advance and shows the expiry date in Settings. Ask for an extension any time before or after it ends. Your simulation files stay on your computer either way.</p>
+      </details>
+      <details>
+        <summary>Does the add-on need a separate licence?</summary>
+        <p>No. The Electrochemical Models Add-On is free with any active licence.</p>
+      </details>
+      <details>
+        <summary>Does the app need internet?</summary>
+        <p>The licence is checked when the app starts. A short-lived offline token means brief outages do not interrupt your work, and a licence-server outage is reported as an outage, not as an invalid licence.</p>
+      </details>
+      <details>
+        <summary>What information does licensing use?</summary>
+        <p>Your email (and optionally name and organisation), the key, hardware identifiers that tie the licence to one computer, and the IP address and time of each check. The <a href="{{ '/legal/privacy/' | relative_url }}">privacy policy</a> explains each one.</p>
+      </details>
+    </div>
+  </div>
+</section>
