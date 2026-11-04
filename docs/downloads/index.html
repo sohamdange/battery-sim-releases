@@ -16,7 +16,7 @@ live_release: true
           <p class="mono muted"><span data-rel="app-version">Latest version</span> <span data-rel="app-date" hidden></span></p>
         </div>
       </div>
-      <p>The desktop app with the RC equivalent-circuit solver, cell and pack libraries, the cycle builder and results analysis. Python and all runtimes are bundled.</p>
+      <p>The desktop app with the per-cell RC solver, the pack thermal model, cell and pack libraries, the cycle builder and results analysis. Python and all runtimes are bundled.</p>
       <div class="actions">
         <a class="btn btn-charge btn-lg" data-rel="app-download" href="{{ site.data.release_links.latest_app_page }}">
           {% include icon.html name="download" px=18 %}Download installer
@@ -60,7 +60,7 @@ live_release: true
         <p class="muted small">The add-on is not code-signed. Compare these checksums to confirm a copy is genuine.</p>
       </details>
       <p class="muted small">
-        Needs an app version that uses add-on protocol 11 (the release after 0.1.8 or later). Free with any active licence.
+        Needs Battery Sim Suite 0.2.0 or later (add-on protocol 11). Free with any active licence.
         Source code for the bundled LGPL parts: <a data-rel="addon-sources" href="{{ site.data.release_links.releases_page }}">sources zip</a>.
       </p>
     </article>
@@ -105,10 +105,11 @@ live_release: true
         <p>The app tells you when an update is available and installs it for you. Your data is backed up automatically first.</p>
       </article>
     </div>
+    <p class="center reveal"><a class="btn btn-charge" href="{{ '/guide/' | relative_url }}">Your first simulation, step by step {% include icon.html name="arrow" px=16 %}</a></p>
     <div class="faq reveal">
       <details>
         <summary>An update did not finish. What now?</summary>
-        <p>Open the app and use the <strong>Repair</strong> option, which re-runs the installer from inside the app. Since 0.1.8 the app also detects when only part of an update was installed. You can also download the installer above and run it over the existing installation.</p>
+        <p>Open the app and use the <strong>Repair</strong> option, which re-runs the installer from inside the app. Since 0.1.8 the app also detects when only part of an update was installed. An installed add-on is kept through updates. You can also download the installer above and run it over the existing installation.</p>
       </details>
       <details>
         <summary>Where is my data stored?</summary>

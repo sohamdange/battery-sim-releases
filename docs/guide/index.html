@@ -1,0 +1,147 @@
+---
+title: Getting started
+description: From a fresh install to your first Battery Sim Suite simulation result in six steps, with the data model explained and the common mistakes to avoid.
+eyebrow: "// Getting started"
+hero_title: Your first simulation, step by step
+hero_lede: From a fresh install to your first result. Each step builds a reusable piece of your library, so the next study starts further along.
+---
+<nav class="subnav" aria-label="On this page">
+  <div class="wrap subnav-inner">
+    <a href="#model">How it fits together</a>
+    <a href="#step-1">1 Cell</a>
+    <a href="#step-2">2 Pack</a>
+    <a href="#step-3">3 Sub-cycles</a>
+    <a href="#step-4">4 Schedule</a>
+    <a href="#step-5">5 Run</a>
+    <a href="#step-6">6 Results</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<section class="section section--tight" id="model">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Before you start</p>
+      <h2 class="section-title">How the pieces fit together</h2>
+      <p class="section-lede">A simulation combines a <strong>pack</strong> (built from one <strong>cell</strong>) with a <strong>simulation cycle</strong> (the load it sees, day by day). The load is built in three levels, so nothing is duplicated.</p>
+    </div>
+    <ol class="hierarchy reveal">
+      <li><span class="mono">STEPS</span><strong>Sub-cycle</strong><small>Current, power or rest steps, e.g. 1 C charge for 30 min</small></li>
+      <li><span class="mono">ONE DAY</span><strong>Drive cycle</strong><small>Sub-cycles in order, up to 24 hours</small></li>
+      <li><span class="mono">CALENDAR</span><strong>Simulation cycle</strong><small>Rules that assign drive cycles to days</small></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap wrap--narrow">
+    <ol class="guide">
+      <li class="guide-step reveal" id="step-1">
+        <span class="guide-num mono">01</span>
+        <div>
+          <h2>Add a cell</h2>
+          <p class="muted">In the app: <strong>Cell Library &rarr; Add a cell</strong></p>
+          <p>A cell holds its identity, dimensions and voltage limits. Fill in the name, nominal voltage and capacity first. Then add a <strong>configuration</strong>: the physics to run it with.</p>
+          <ul class="checks">
+            <li>{% include icon.html name="check" px=18 %}<span><strong>Circuit model:</strong> download the RC template CSV, fill in your measured SOC, OCV, R0 and RC values for each temperature, and upload it. It is checked as it uploads.</span></li>
+            <li>{% include icon.html name="check" px=18 %}<span><strong>Electrochemical model</strong> (with the <a href="{{ '/features/electrochemical/' | relative_url }}">add-on</a>): enter the cell&rsquo;s electrochemical parameter block, and record where the values came from.</span></li>
+          </ul>
+          <div class="callout"><p><strong>Common mistake:</strong> RC data at only one temperature. The solver interpolates between temperatures, so a single point gives wrong results elsewhere. If that is all you have, set a generous temperature extrapolation tolerance.</p></div>
+        </div>
+      </li>
+
+      <li class="guide-step reveal" id="step-2">
+        <span class="guide-num mono">02</span>
+        <div>
+          <h2>Build a pack</h2>
+          <p class="muted">In the app: <strong>Pack Builder</strong></p>
+          <p>Choose the cell, then arrange cells in layers using a rectangular or diagonal layout. Pick how they are wired (column-parallel, row-parallel or custom groups) and set the series and parallel link resistances. The builder shows the resulting voltage, capacity and limits, with 2D and 3D previews.</p>
+          <p>For a thermal study, check the cell-to-cell thermal connections and set cooling to the air or a coolant plate.</p>
+          <div class="callout"><p><strong>Common mistake:</strong> mixing up column-parallel and row-parallel. The name says which direction is in parallel, not which is in series.</p></div>
+        </div>
+      </li>
+
+      <li class="guide-step reveal" id="step-3">
+        <span class="guide-num mono">03</span>
+        <div>
+          <h2>Create sub-cycles</h2>
+          <p class="muted">In the app: <strong>Drive Builder &rarr; Sub-cycle Builder</strong></p>
+          <p>A sub-cycle is a list of steps: charge, discharge or rest, in current or power, for a set time, or until a voltage or SOC condition is met. Build them in the table, or upload a recorded schedule from CSV or Excel.</p>
+          <div class="callout"><p><strong>Common mistake:</strong> no rest between charge and discharge. Real cells need rest for their voltage to relax.</p></div>
+        </div>
+      </li>
+
+      <li class="guide-step reveal" id="step-4">
+        <span class="guide-num mono">04</span>
+        <div>
+          <h2>Assemble the schedule</h2>
+          <p class="muted">In the app: <strong>Drive Cycle Builder</strong>, then <strong>Simulation Cycle Builder</strong></p>
+          <p>Chain sub-cycles into a <strong>drive cycle</strong>: one day of use, up to 24 hours. Then create a <strong>simulation cycle</strong> and use its Calendar tab to assign drive cycles to days, for example weekdays commute, weekends highway, with a default rule for every other day.</p>
+          <div class="callout"><p><strong>Common mistake:</strong> conditions on one rule combine with AND. Months = January and Days = Monday fires only on Mondays in January. The first matching rule wins, so order rules from most to least specific.</p></div>
+        </div>
+      </li>
+
+      <li class="guide-step reveal" id="step-5">
+        <span class="guide-num mono">05</span>
+        <div>
+          <h2>Configure and run</h2>
+          <p class="muted">In the app: <strong>Simulations</strong></p>
+          <p>Select the pack and the simulation cycle. Choose the model first, then the cell configuration, then set the starting SOC, cell temperature and ambient temperature. Optionally switch on the thermal model, give cells their own capacity and resistance spread, and choose what the run records.</p>
+          <p>Runs show live progress. You can start several at once, and stop one at any point while keeping the results so far.</p>
+          <div class="callout"><p><strong>Common mistake:</strong> a high starting SOC with a charge-heavy schedule. The run stops at the upper voltage cut-off soon after it starts.</p></div>
+        </div>
+      </li>
+
+      <li class="guide-step reveal" id="step-6">
+        <span class="guide-num mono">06</span>
+        <div>
+          <h2>Read the results</h2>
+          <p class="muted">In the app: <strong>Simulations &rarr; open a run</strong></p>
+          <p>Start with end SOC and peak temperature, then explore the pack, cell, overlapping and spatial views. Electrochemical runs with ageing add an Ageing panel. Export the time series to CSV, or create a PDF report.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap wrap--narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">// FAQ</p>
+      <h2 class="section-title">Questions while getting started</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Why is the Run button disabled?</summary>
+        <p>It needs both a pack and a simulation cycle selected. If both are, check that the pack has a valid cell and that a model and cell configuration are chosen.</p>
+      </details>
+      <details>
+        <summary>What format do RC parameters need?</summary>
+        <p>Use the template from the Cell Builder rather than writing one from scratch. Columns are named by direction and temperature, such as <code>CHARGE_T25_soc</code> or <code>DISCHARGE_T05_r0</code>, and each temperature needs both a charge and a discharge block. SOC must rise from row to row. A table that stops short of 0 % or 100 % is extended in a straight line, shown dashed in the plots.</p>
+      </details>
+      <details>
+        <summary>Does the app include standard drive cycles?</summary>
+        <p>No. Build your own from steps, or import a recorded schedule from CSV or Excel as a sub-cycle.</p>
+      </details>
+      <details>
+        <summary>Can a pack mix different cells?</summary>
+        <p>A pack uses one cell type. To study cell-to-cell differences, give each cell its own capacity and resistance factors in the simulation setup: typed, imported from CSV, or drawn from a measured spread with a repeatable seed.</p>
+      </details>
+      <details>
+        <summary>Which model should I start with?</summary>
+        <p>The built-in equivalent-circuit model: it is the fastest and needs only RC tables. Move to SPM, SPMe or DFN when you need diffusion limits, electrolyte effects or ageing. See <a href="{{ '/features/electrochemical/' | relative_url }}">the engines</a>.</p>
+      </details>
+      <details>
+        <summary>Is every loss counted as heat?</summary>
+        <p>Not yet. Pack link resistance, cell contact resistance on the electrochemical models, and SEI film resistance lower the voltage correctly but are left out of reported heat. Each affected run&rsquo;s log carries a warning.</p>
+      </details>
+      <details>
+        <summary>Can I run several simulations at once?</summary>
+        <p>Yes. Each run is independent, though they share your computer&rsquo;s resources, so several heavy runs will each be slower.</p>
+      </details>
+    </div>
+    <p class="center"><a class="btn btn-ghost" href="{{ '/contact/' | relative_url }}">Still stuck? Get in touch {% include icon.html name="arrow" px=16 %}</a></p>
+  </div>
+</section>
+
+{% include cta.html %}

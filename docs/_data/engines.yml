@@ -1,34 +1,41 @@
 # Cell engines provided by the Electrochemical Models Add-On.
+# Wording follows the app's own engine catalogue
+# (backend/app/services/simulation/engines.py in the app repository).
 # fidelity is a qualitative 1-5 scale used for the meter graphic.
+# speed is the app's own label for each engine.
 - short: ECM
   name: Thevenin
   fidelity: 2
+  speed: Fast
   summary: >-
-    Equivalent-circuit model: open-circuit voltage, a series resistance and
-    RC pairs. The fastest add-on engine.
-  resolves: Terminal voltage from OCV, ohmic drop and RC polarisation
-  use: Long drive cycles, year-long calendars and large parameter sweeps
+    PyBaMM's equivalent-circuit model, run from the same R/C tables as the
+    built-in model. An independent cross-check on it.
+  resolves: Terminal voltage from OCV, ohmic drop and RC polarisation, at each cell's temperature
+  use: Checking built-in circuit results against a second implementation
 - short: SPM
   name: Single Particle Model
   fidelity: 3
+  speed: Moderate
   summary: >-
-    Each electrode is represented by a single spherical particle with
-    lithium diffusion in the solid. Electrolyte effects are neglected.
+    The lightest electrochemical model. Each electrode is one representative
+    particle, which captures diffusion limits a circuit model cannot.
   resolves: Solid-phase diffusion and electrode surface concentration
-  use: Low to moderate C-rates where electrolyte limits are small
+  use: Low to moderate C-rates, and long ageing studies at a modest cost
 - short: SPMe
   name: SPM with electrolyte
   fidelity: 4
+  speed: Moderate
   summary: >-
-    Extends the SPM with electrolyte concentration and potential, which
-    matter more as current rises.
-  resolves: Solid diffusion plus electrolyte transport losses
-  use: Higher currents and fast-charge studies, at modest extra cost
+    Adds electrolyte transport to the single particle model, which matters
+    more as current rises.
+  resolves: Solid diffusion plus electrolyte concentration and potential
+  use: Higher currents and fast-charge studies
 - short: DFN
   name: Doyle-Fuller-Newman
   fidelity: 5
+  speed: Slow
   summary: >-
-    The pseudo-two-dimensional (P2D) model: particles across the electrode
-    thickness and full electrolyte transport. The highest fidelity engine.
-  resolves: Through-thickness concentration and potential in both phases
+    The full pseudo-two-dimensional (P2D) model, and the most detailed engine
+    offered. Around ten times the cost of an SPM step per cell.
+  resolves: Concentration and potential through the electrode thickness, in both phases
   use: Reference results, validation and detailed electrode studies

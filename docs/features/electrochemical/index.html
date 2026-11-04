@@ -1,9 +1,9 @@
 ---
 title: Electrochemical Models Add-On
-description: Four PyBaMM-based cell engines for Battery Sim Suite (Thevenin, SPM, SPMe and DFN), free with any active licence.
+description: Four PyBaMM-based cell engines for Battery Sim Suite (Thevenin, SPM, SPMe and DFN) that run whole packs and model cell ageing. Free with any active licence.
 eyebrow: "// Add-on"
 hero_title: Electrochemical Models Add-On
-hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside Battery Sim Suite. Free with any active licence.
+hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside Battery Sim Suite. Run whole packs, model cell ageing, and compare models on the same inputs. Free with any active licence.
 ---
 <section class="section section--tight">
   <div class="wrap">
@@ -11,7 +11,7 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
       <div><span class="mono">ENGINES</span><strong>4</strong></div>
       <div><span class="mono">PRICE</span><strong>Free</strong><small>with any active licence</small></div>
       <div><span class="mono">INSTALL</span><strong>Settings &rarr; About</strong><small>or from a file, offline</small></div>
-      <div><span class="mono">REQUIRES</span><strong>App after 0.1.8</strong><small>add-on protocol 11</small></div>
+      <div><span class="mono">REQUIRES</span><strong>App 0.2.0+</strong><small>add-on protocol 11</small></div>
     </div>
   </div>
 </section>
@@ -36,6 +36,7 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
         </div>
         <p>{{ engine.summary }}</p>
         <dl class="engine-facts">
+          <div><dt>Speed</dt><dd>{{ engine.speed }}</dd></div>
           <div><dt>Resolves</dt><dd>{{ engine.resolves }}</dd></div>
           <div><dt>Good for</dt><dd>{{ engine.use }}</dd></div>
         </dl>
@@ -47,6 +48,48 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
 </section>
 
 <section class="section section--panel">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// What you can study</p>
+      <h2 class="section-title">More than a single cell on a test bench</h2>
+      <p class="section-lede">The add-on engines plug into the same pack, schedule and results pipeline as the built-in model, so everything else in the app works with them.</p>
+    </div>
+    <div class="cards cards--3">
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="pack" %}</span>
+        <h3>Whole packs</h3>
+        <p>Run every cell of a pack on SPM, SPMe or DFN, including cells wired in parallel, which share the load as their states drift apart.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="refresh" %}</span>
+        <h3>Cell ageing</h3>
+        <p>Switch on SEI growth, lithium plating or swelling in a cell configuration. Ageing feeds back into the run as it happens, through lost capacity and added resistance.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="chart" %}</span>
+        <h3>State of health over time</h3>
+        <p>Every 10 simulated minutes the run records each cell&rsquo;s state of health, capacity, lithium lost, active material lost and SEI thickness, shown in an Ageing panel and the PDF report.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="bolt" %}</span>
+        <h3>Thermal, on every engine</h3>
+        <p>The pack thermal model works with the add-on engines too: heat from neighbouring cells becomes each PyBaMM cell&rsquo;s surroundings.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="cell" %}</span>
+        <h3>Your own parameters</h3>
+        <p>Enter a cell&rsquo;s electrochemical parameter block in the Cell Builder, with a references field for where the numbers came from, such as Chen et al. 2020.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon">{% include icon.html name="shield" %}</span>
+        <h3>Comparable results</h3>
+        <p>Every result records the engine, solver (IDAKLU or CasADi) and cell configuration that produced it, so two runs can be compared knowing exactly what made each.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="wrap split">
     <div class="split-copy reveal">
       <p class="eyebrow">// Install</p>
@@ -71,7 +114,7 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
   </div>
 </section>
 
-<section class="section">
+<section class="section section--panel">
   <div class="wrap">
     <div class="cards cards--3">
       <article class="card reveal">
@@ -82,7 +125,7 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
       <article class="card reveal">
         <span class="card-icon">{% include icon.html name="refresh" %}</span>
         <h3>Matched to your app</h3>
-        <p>Add-on 11.0 is for app versions that use add-on protocol 11, starting with the release after 0.1.8. Update the app first if Install is not offered.</p>
+        <p>Add-on 11.0 is for app versions that use add-on protocol 11, starting with Battery Sim Suite 0.2.0. Update the app first if Install is not offered.</p>
       </article>
       <article class="card reveal">
         <span class="card-icon">{% include icon.html name="doc" %}</span>
