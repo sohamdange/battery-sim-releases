@@ -1,6 +1,8 @@
 # Header navigation. Case studies are added automatically when
 # show_case_studies is true in _config.yml.
 main:
+  - title: Get started
+    url: /guide/
   - title: Features
     url: /features/
   - title: Electrochemical

@@ -1,0 +1,84 @@
+# Screenshots used on the site, one entry per image.
+#
+# To add or replace one, save a PNG at docs/screenshots/<file>.
+# Pages use {% include shot.html id="<id>" %}: while the file is missing a
+# placeholder is shown, and as soon as it exists the screenshot appears.
+#
+# Capture guidance for every image:
+#   - Battery Sim Suite 0.2.0, window at 1440 x 900 (16:10), dark theme
+#   - realistic demo data, no customer names or personal file paths
+#   - PNG, under ~500 KB if possible
+
+# ---- Existing: still show the old "Battery Toolkit" name, replace ----
+- id: dashboard
+  file: dashboard.png
+  title: Home dashboard
+  alt: Home dashboard with simulation counts, cell and pack totals, and recent activity
+  capture: Home page with a populated library (several cells, packs, simulations) and recent runs listed.
+- id: cells
+  file: cells.png
+  title: Cell Library
+  alt: Cell library table listing several cell models
+  capture: Cell Library table with 5-8 cells of mixed form factors.
+- id: sims
+  file: sim-library.png
+  title: Simulation Library
+  alt: Simulation library listing runs with status badges
+  capture: Simulation Library with completed, running and stopped runs, showing status badges and a progress bar.
+- id: results
+  file: results.png
+  title: Results
+  alt: Simulation results with SOC and temperature summaries and plots
+  capture: Results of a completed pack run with the thermal model on, showing end SOC, peak temperature and the plots.
+- id: cycles
+  file: drive-cycles.png
+  title: Simulation cycle library
+  alt: Simulation cycle library with calendar rules
+  capture: Simulation Cycle library or builder, showing several cycles and their calendar rules.
+
+# ---- New in 0.2.0 ----
+- id: cell-builder
+  file: cell-builder.png
+  title: Cell Builder
+  alt: Cell Builder with cell details and a named configuration
+  capture: Cell Builder editing a cell, with its configurations list showing one circuit and one electrochemical configuration.
+- id: pack-builder
+  file: pack-builder.png
+  title: Pack Builder
+  alt: Pack Builder with a multi-layer layout and 3D preview
+  capture: Pack Builder with a multi-layer pack, the pack summary (voltage, capacity) and the 3D preview visible.
+- id: thermal-setup
+  file: thermal-setup.png
+  title: Thermal connections and cooling
+  alt: Pack Builder thermal connections and cooling settings
+  capture: Pack Builder thermal connections view and the cooling settings (air and coolant plate) for the same pack.
+- id: subcycle-builder
+  file: subcycle-builder.png
+  title: Sub-cycle Builder
+  alt: Sub-cycle Builder step table with charge, rest and discharge steps
+  capture: Sub-cycle Builder table with a mix of current, power, rest and trigger steps.
+- id: calendar
+  file: sim-cycle-calendar.png
+  title: Simulation cycle calendar
+  alt: Simulation Cycle Builder calendar tab with rules assigning drive cycles to days
+  capture: Simulation Cycle Builder Calendar tab with weekday, weekend and date-range rules plus a default rule.
+- id: simulation-setup
+  file: simulation-setup.png
+  title: Simulation setup
+  alt: Simulation setup with pack, schedule, model and initial conditions
+  capture: Simulation setup with a pack and simulation cycle selected, the model chosen, initial conditions, and the thermal switch on.
+- id: engine-picker
+  file: engine-picker.png
+  title: Choosing a model
+  alt: Engine selector listing built-in and PyBaMM models with speed and fidelity
+  capture: Engine selector open on a cell that can run every model, showing built-in RC, Thevenin, SPM, SPMe and DFN.
+- id: ageing-panel
+  file: ageing-panel.png
+  title: Ageing panel
+  alt: Ageing panel showing state of health and capacity loss over time
+  capture: Results Ageing panel from an SPM or DFN run with SEI growth on, showing state of health and losses over time.
+- id: addon-install
+  file: addon-install.png
+  title: Installing the add-on
+  alt: Settings About section with the Electrochemical Models Add-On install controls
+  capture: Settings, About section, showing the Electrochemical Models Add-On card with its Install button (or installed status).

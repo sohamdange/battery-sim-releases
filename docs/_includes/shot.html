@@ -1,0 +1,19 @@
+{%- comment -%}
+  A screenshot from _data/shots.yml, or a placeholder until its file exists.
+  Usage: {% include shot.html id="engine-picker" %}
+{%- endcomment -%}
+{%- assign shot = site.data.shots | where: "id", include.id | first -%}
+{%- assign shot_path = "/screenshots/" | append: shot.file -%}
+{%- assign shot_file = site.static_files | where: "path", shot_path | first -%}
+<figure class="frame shot{% if include.class %} {{ include.class }}{% endif %}">
+  <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">{{ shot.title }}</span></div>
+  {%- if shot_file %}
+  <img src="{{ shot_path | relative_url }}" alt="{{ shot.alt }}" loading="lazy" width="1440" height="900">
+  {%- else %}
+  <div class="shot-placeholder" role="img" aria-label="{{ shot.title }}: screenshot coming soon">
+    {% include icon.html name="chart" px=28 %}
+    <strong>{{ shot.title }}</strong>
+    <span class="mono">Screenshot coming soon</span>
+  </div>
+  {%- endif %}
+</figure>

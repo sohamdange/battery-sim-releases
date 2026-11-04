@@ -128,7 +128,7 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(3px);
 .nav-toggle { display: none; background: none; border: 1px solid var(--line-2); color: var(--text); border-radius: 10px; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; }
 .nav-toggle-close { display: none; }
 
-@media (max-width: 920px) {
+@media (max-width: 1080px) {
   .js .nav-toggle { display: inline-flex; }
   .js .site-nav {
     position: absolute; left: 0; right: 0; top: var(--header-h);
@@ -576,3 +576,43 @@ td code { font-size: 12px; word-break: break-all; }
 
 /* Separator before dates filled in by release-info.js */
 [data-rel="app-date"]::before, [data-rel="addon-date"]::before { content: "· "; }
+
+/* ---------- Thermal graphic (features) ---------- */
+.thermal-viz { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; }
+.thermal-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
+.thermal-grid span { aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 50%, var(--heat, #3DE0FF) 0 55%, transparent 56%); opacity: .9; animation: heat 5s ease-in-out infinite; }
+.thermal-grid span:nth-child(10n+4), .thermal-grid span:nth-child(10n+5), .thermal-grid span:nth-child(10n+6), .thermal-grid span:nth-child(10n+7) { --heat: #C6FF3D; animation-delay: .6s; }
+.thermal-grid span:nth-child(n+11):nth-child(-n+20):nth-child(10n+5), .thermal-grid span:nth-child(n+11):nth-child(-n+20):nth-child(10n+6) { --heat: #FFC24B; animation-delay: 1.2s; }
+@keyframes heat { 0%, 100% { filter: brightness(.75); } 50% { filter: brightness(1.2); } }
+
+/* ---------- Guide ---------- */
+.hierarchy { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; position: relative; }
+.hierarchy li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 4px; position: relative; }
+.hierarchy li + li::before { content: "\2192"; position: absolute; left: -15px; top: 50%; transform: translate(-50%, -50%); color: var(--lime); font: 700 18px var(--font-mono); }
+.hierarchy .mono { font-size: 12px; color: var(--lime); letter-spacing: .1em; }
+.hierarchy strong { font: 700 21px var(--font-display); }
+.hierarchy small { color: var(--muted); font-size: 14px; }
+.guide { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.guide-step { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 24px; padding: 40px 0; border-top: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 64px); }
+.guide-step:first-child { border-top: 0; padding-top: 0; }
+.guide-num { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: var(--on-lime); background: var(--lime); box-shadow: 0 0 24px -6px rgba(198,255,61,.6); }
+.guide-step h2 { font-size: 28px; margin: 6px 0 6px; }
+.guide-step p { color: #D3DAF0; }
+.guide-step .callout { margin-top: 20px; }
+.guide-step .checks { margin-bottom: 8px; }
+@media (max-width: 640px) {
+  .hierarchy { grid-template-columns: minmax(0, 1fr); }
+  .hierarchy li + li::before { content: "\2193"; left: 50%; top: -9px; }
+  .guide-step { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .guide-num { width: 44px; height: 44px; font-size: 15px; }
+}
+
+/* ---------- Screenshots and placeholders (_includes/shot.html) ---------- */
+.shot-placeholder { aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; margin: 14px; border: 1px dashed var(--line-2); border-radius: 12px; color: var(--dim); text-align: center; padding: 16px; background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(160,180,255,.03) 14px 28px); }
+.shot-placeholder .icon { color: var(--lime); opacity: .7; }
+.shot-placeholder strong { font: 600 18px var(--font-display); color: var(--muted); }
+.shot-placeholder .mono { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.shot-row { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px; align-items: center; margin-top: 48px; }
+.shot-row > p { margin: 0; }
+.guide-step .shot { margin-top: 24px; }
+@media (max-width: 920px) { .shot-row { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
