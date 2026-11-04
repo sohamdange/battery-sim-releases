@@ -1,0 +1,62 @@
+---
+layout: legal
+title: Open-source notices
+description: Open-source software used by Battery Sim Suite, the Electrochemical Models Add-On and this website.
+---
+<p>
+  Battery Sim Suite is built with open-source software. Each part keeps its own licence, and
+  this page explains where to find them.
+</p>
+
+<h2>The application</h2>
+
+<p>
+  The full list of open-source components in the app, with their licence texts, is in the app
+  under <strong>Settings &rarr; Licences</strong>.
+</p>
+
+<h2>Electrochemical Models Add-On</h2>
+
+<p>
+  The add-on uses <a href="https://pybamm.org">PyBaMM</a>. It is not affiliated with or endorsed by
+  the PyBaMM team.
+</p>
+
+<p>
+  The add-on bundles open-source software, each part under its own licence. The full list is in
+  <code>THIRD_PARTY_NOTICES.txt</code> inside the add-on, and in the app under
+  <strong>Settings &rarr; Licences</strong>.
+</p>
+
+<div class="callout">
+  <p>
+    <strong>Source code for the LGPL parts.</strong> Each add-on release includes a sources zip
+    with the exact source code of CasADi (LGPL) and of the solver parts shipped with it:
+    pybammsolvers, SUNDIALS, SuiteSparse KLU and the GCC runtime. It is on the
+    <a href="{{ '/downloads/' | relative_url }}#addon">Downloads page</a>.
+  </p>
+</div>
+
+<p>
+  CasADi ships as its own folder of unmodified files (<code>_internal\casadi</code>), so it can be
+  replaced with your own build of the same CasADi version (3.7.2 for add-on 11.0).
+</p>
+
+<h2>This website</h2>
+
+<ul>
+  <li><strong>Space Grotesk</strong>, by Florian Karsten. SIL Open Font License 1.1 (<a href="{{ '/assets/fonts/OFL-SpaceGrotesk.txt' | relative_url }}">licence</a>).</li>
+  <li><strong>JetBrains Mono</strong>, by JetBrains. SIL Open Font License 1.1 (<a href="{{ '/assets/fonts/OFL-JetBrainsMono.txt' | relative_url }}">licence</a>).</li>
+</ul>
+
+<p>
+  The site is built with <a href="https://jekyllrb.com">Jekyll</a> and hosted on GitHub Pages.
+  It sets no cookies and uses no analytics.
+</p>
+
+<h2>Contact</h2>
+
+<p>
+  Questions about open-source components or a request for source code can go to
+  <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.
+</p>

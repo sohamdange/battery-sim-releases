@@ -1,0 +1,45 @@
+<footer class="site-footer">
+  <div class="current-line" aria-hidden="true"></div>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        {% include logo.html %}
+        <span class="brand-name">Battery Sim <span>Suite</span></span>
+      </a>
+      <p>{{ site.tagline }}. Desktop software for Windows, built and maintained by {{ site.author }}.</p>
+      <a class="footer-email" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" px=16 %}{{ site.contact_email }}</a>
+    </div>
+    <div class="footer-col">
+      <h2>Product</h2>
+      <ul>
+        <li><a href="{{ '/features/' | relative_url }}">Features</a></li>
+        <li><a href="{{ '/features/electrochemical/' | relative_url }}">Electrochemical Add-On</a></li>
+        <li><a href="{{ '/downloads/' | relative_url }}">Downloads</a></li>
+        {%- if site.show_case_studies %}
+        <li><a href="{{ '/case-studies/' | relative_url }}">Case studies</a></li>
+        {%- endif %}
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>Support</h2>
+      <ul>
+        <li><a href="{{ '/licence/' | relative_url }}">Get a licence key</a></li>
+        <li><a href="{{ '/downloads/' | relative_url }}#help">Install &amp; update help</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        <li><a href="{{ site.data.release_links.repo_url }}">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <ul>
+        <li><a href="{{ '/legal/terms/' | relative_url }}">Terms of Service</a></li>
+        <li><a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a></li>
+        <li><a href="{{ '/legal/open-source/' | relative_url }}">Open-source notices</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>&copy; {{ site.time | date: "%Y" }} {{ site.author }}. {{ site.title }}.</span>
+    <span class="mono">No cookies. No tracking. Your simulations stay on your computer.</span>
+  </div>
+</footer>

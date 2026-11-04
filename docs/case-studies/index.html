@@ -1,0 +1,35 @@
+---
+title: Case studies
+description: How engineers and researchers use Battery Sim Suite.
+eyebrow: "// Case studies"
+hero_title: Case studies
+hero_lede: How engineers and researchers use Battery Sim Suite, from cell validation to year-long pack missions.
+noindex: true
+sitemap: false
+---
+{%- assign studies = site.case_studies | sort: "date" | reverse -%}
+<section class="section section--tight">
+  <div class="wrap">
+    {%- if studies.size > 0 %}
+    <div class="cards cards--3">
+      {%- for study in studies %}
+      <a class="card card--link study-card reveal" href="{{ study.url | relative_url }}">
+        {%- if study.image %}
+        <img class="study-thumb" src="{{ study.image | relative_url }}" alt="" loading="lazy">
+        {%- endif %}
+        {%- if study.sector %}<span class="engine-tag mono">{{ study.sector }}</span>{% endif %}
+        <h2 class="h3">{{ study.title }}</h2>
+        <p>{{ study.summary }}</p>
+        <span class="link-arrow">Read the study {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <div class="empty reveal">
+      <div class="charge-bar charge-bar--loading" aria-hidden="true"><span></span></div>
+      <h2>Case studies are on their way</h2>
+      <p>Using Battery Sim Suite in your work and willing to share how? <a href="{{ '/contact/' | relative_url }}">Get in touch</a>.</p>
+    </div>
+    {%- endif %}
+  </div>
+</section>

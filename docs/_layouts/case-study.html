@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<article>
+  <section class="page-hero">
+    <div class="circuit-bg" aria-hidden="true"></div>
+    <div class="wrap wrap--narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="{{ '/case-studies/' | relative_url }}">Case studies</a>
+        <span aria-hidden="true">/</span>
+        <span>{{ page.title }}</span>
+      </nav>
+      <h1 class="page-title">{{ page.title }}</h1>
+      {%- if page.summary %}<p class="page-lede">{{ page.summary }}</p>{% endif %}
+      <dl class="study-meta">
+        {%- if page.organisation %}<div><dt>Organisation</dt><dd>{{ page.organisation }}</dd></div>{% endif %}
+        {%- if page.sector %}<div><dt>Sector</dt><dd>{{ page.sector }}</dd></div>{% endif %}
+        {%- if page.models %}<div><dt>Models</dt><dd>{{ page.models | join: ", " }}</dd></div>{% endif %}
+        {%- if page.pack %}<div><dt>Pack</dt><dd>{{ page.pack }}</dd></div>{% endif %}
+      </dl>
+    </div>
+  </section>
+  {%- if page.image %}
+  <div class="wrap wrap--narrow">
+    <figure class="frame study-cover">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
+    </figure>
+  </div>
+  {%- endif %}
+  <section class="section section--tight">
+    <div class="wrap wrap--narrow prose">
+      {{ content }}
+    </div>
+  </section>
+</article>
+{% include cta.html %}
