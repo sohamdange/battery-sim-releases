@@ -606,3 +606,13 @@ td code { font-size: 12px; word-break: break-all; }
   .guide-step { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .guide-num { width: 44px; height: 44px; font-size: 15px; }
 }
+
+/* ---------- Screenshots and placeholders (_includes/shot.html) ---------- */
+.shot-placeholder { aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; margin: 14px; border: 1px dashed var(--line-2); border-radius: 12px; color: var(--dim); text-align: center; padding: 16px; background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(160,180,255,.03) 14px 28px); }
+.shot-placeholder .icon { color: var(--lime); opacity: .7; }
+.shot-placeholder strong { font: 600 18px var(--font-display); color: var(--muted); }
+.shot-placeholder .mono { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.shot-row { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px; align-items: center; margin-top: 48px; }
+.shot-row > p { margin: 0; }
+.guide-step .shot { margin-top: 24px; }
+@media (max-width: 920px) { .shot-row { grid-template-columns: minmax(0, 1fr); gap: 16px; } }

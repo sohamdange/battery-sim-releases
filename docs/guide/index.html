@@ -47,6 +47,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
             <li>{% include icon.html name="check" px=18 %}<span><strong>Electrochemical model</strong> (with the <a href="{{ '/features/electrochemical/' | relative_url }}">add-on</a>): enter the cell&rsquo;s electrochemical parameter block, and record where the values came from.</span></li>
           </ul>
           <div class="callout"><p><strong>Common mistake:</strong> RC data at only one temperature. The solver interpolates between temperatures, so a single point gives wrong results elsewhere. If that is all you have, set a generous temperature extrapolation tolerance.</p></div>
+          {% include shot.html id="cell-builder" %}
         </div>
       </li>
 
@@ -58,6 +59,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
           <p>Choose the cell, then arrange cells in layers using a rectangular or diagonal layout. Pick how they are wired (column-parallel, row-parallel or custom groups) and set the series and parallel link resistances. The builder shows the resulting voltage, capacity and limits, with 2D and 3D previews.</p>
           <p>For a thermal study, check the cell-to-cell thermal connections and set cooling to the air or a coolant plate.</p>
           <div class="callout"><p><strong>Common mistake:</strong> mixing up column-parallel and row-parallel. The name says which direction is in parallel, not which is in series.</p></div>
+          {% include shot.html id="pack-builder" %}
         </div>
       </li>
 
@@ -68,6 +70,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
           <p class="muted">In the app: <strong>Drive Builder &rarr; Sub-cycle Builder</strong></p>
           <p>A sub-cycle is a list of steps: charge, discharge or rest, in current or power, for a set time, or until a voltage or SOC condition is met. Build them in the table, or upload a recorded schedule from CSV or Excel.</p>
           <div class="callout"><p><strong>Common mistake:</strong> no rest between charge and discharge. Real cells need rest for their voltage to relax.</p></div>
+          {% include shot.html id="subcycle-builder" %}
         </div>
       </li>
 
@@ -78,6 +81,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
           <p class="muted">In the app: <strong>Drive Cycle Builder</strong>, then <strong>Simulation Cycle Builder</strong></p>
           <p>Chain sub-cycles into a <strong>drive cycle</strong>: one day of use, up to 24 hours. Then create a <strong>simulation cycle</strong> and use its Calendar tab to assign drive cycles to days, for example weekdays commute, weekends highway, with a default rule for every other day.</p>
           <div class="callout"><p><strong>Common mistake:</strong> conditions on one rule combine with AND. Months = January and Days = Monday fires only on Mondays in January. The first matching rule wins, so order rules from most to least specific.</p></div>
+          {% include shot.html id="calendar" %}
         </div>
       </li>
 
@@ -89,6 +93,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
           <p>Select the pack and the simulation cycle. Choose the model first, then the cell configuration, then set the starting SOC, cell temperature and ambient temperature. Optionally switch on the thermal model, give cells their own capacity and resistance spread, and choose what the run records.</p>
           <p>Runs show live progress. You can start several at once, and stop one at any point while keeping the results so far.</p>
           <div class="callout"><p><strong>Common mistake:</strong> a high starting SOC with a charge-heavy schedule. The run stops at the upper voltage cut-off soon after it starts.</p></div>
+          {% include shot.html id="simulation-setup" %}
         </div>
       </li>
 
@@ -98,6 +103,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
           <h2>Read the results</h2>
           <p class="muted">In the app: <strong>Simulations &rarr; open a run</strong></p>
           <p>Start with end SOC and peak temperature, then explore the pack, cell, overlapping and spatial views. Electrochemical runs with ageing add an Ageing panel. Export the time series to CSV, or create a PDF report.</p>
+          {% include shot.html id="results" %}
         </div>
       </li>
     </ol>

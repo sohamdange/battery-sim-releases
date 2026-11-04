@@ -44,6 +44,7 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
       {%- endfor %}
     </div>
     <p class="engines-key engines-key--wide mono reveal"><span>Faster</span><span class="engines-key-line"></span><span>More physics</span></p>
+    <div class="shot-row reveal">{% include shot.html id="engine-picker" %}<p class="muted">Pick the model when you set up a run. The list only offers models the pack&rsquo;s cell has data for, and the choice is recorded on the result.</p></div>
   </div>
 </section>
 
@@ -86,6 +87,8 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
         <p>Every result records the engine, solver (IDAKLU or CasADi) and cell configuration that produced it, so two runs can be compared knowing exactly what made each.</p>
       </article>
     </div>
+    <div class="shot-row reveal">{% include shot.html id="ageing-panel" %}<p class="muted">Electrochemical runs with ageing switched on add an Ageing panel to the results, and an Ageing page to the PDF report.</p>
+    </div>
   </div>
 </section>
 
@@ -111,6 +114,9 @@ hero_lede: Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN) inside B
       </ol>
       <p class="muted">The add-on is not code-signed. The SHA-256 checksums on the Downloads page are how to confirm a copy is genuine.</p>
     </div>
+  </div>
+  <div class="wrap">
+    <div class="shot-row reveal">{% include shot.html id="addon-install" %}<p class="muted">Settings &rarr; About shows whether the add-on is installed, its version, and Install or Uninstall. Updates to the app keep an installed add-on.</p></div>
   </div>
 </section>
 
