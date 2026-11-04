@@ -26,9 +26,15 @@ collections:
     output: true
     permalink: /case-studies/:name/
 
+# Social preview (jekyll-seo-tag): shown when a link is shared.
+twitter:
+  card: summary_large_image
+
 defaults:
   - scope: { path: "" }
-    values: { layout: page }
+    values:
+      layout: page
+      image: /assets/img/og.png
   - scope: { path: "", type: case_studies }
     values: { layout: case-study }
 

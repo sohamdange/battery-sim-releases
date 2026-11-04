@@ -24,6 +24,7 @@ live_release: true
         <span class="mono muted" data-rel="app-size" hidden></span>
       </div>
       <p class="muted small">Windows 10 or 11, 64-bit. A free <a href="{{ '/licence/' | relative_url }}">licence key</a> is needed to run it.</p>
+      <p class="muted small">Windows may warn about the installer the first time. <a href="#smartscreen">Here is why, and what to do</a>.</p>
       <div class="release-notes">
         <h3 class="mono">What's new in this release</h3>
         <ul data-rel="app-notes" hidden></ul>
@@ -107,6 +108,12 @@ live_release: true
     </div>
     <p class="center reveal"><a class="btn btn-charge" href="{{ '/guide/' | relative_url }}">Your first simulation, step by step {% include icon.html name="arrow" px=16 %}</a></p>
     <div class="faq reveal">
+      <details id="smartscreen">
+        <summary>Windows says &ldquo;Windows protected your PC&rdquo;</summary>
+        <p>That is Windows SmartScreen. It appears for installers that are not code-signed with a paid certificate, and Battery Sim Suite&rsquo;s installer is not signed yet. It does not mean anything harmful was found.</p>
+        <p>To continue, click <strong>More info</strong>, check the app name, then click <strong>Run anyway</strong>. Only do this for an installer downloaded from this page or the project&rsquo;s GitHub releases.</p>
+        <p>To confirm your copy is genuine, compare its SHA-256 with the one shown next to the installer on the GitHub release page. In PowerShell: <code>Get-FileHash &lt;installer&gt; -Algorithm SHA256</code>. Updates installed from inside the app are signature-checked automatically.</p>
+      </details>
       <details>
         <summary>An update did not finish. What now?</summary>
         <p>Open the app and use the <strong>Repair</strong> option, which re-runs the installer from inside the app. Since 0.1.8 the app also detects when only part of an update was installed. An installed add-on is kept through updates. You can also download the installer above and run it over the existing installation.</p>

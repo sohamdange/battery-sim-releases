@@ -70,6 +70,15 @@
     });
   });
 
+  // A link to a FAQ entry (e.g. #smartscreen) opens it
+  var openTarget = function () {
+    if (!location.hash) return;
+    var el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el && el.tagName === "DETAILS") { el.open = true; el.scrollIntoView(); }
+  };
+  openTarget();
+  window.addEventListener("hashchange", openTarget);
+
   // Copy buttons
   document.querySelectorAll("[data-copy]").forEach(function (btn) {
     if (!navigator.clipboard) return;
