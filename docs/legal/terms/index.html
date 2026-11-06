@@ -1,112 +1,173 @@
 ---
 layout: legal
 title: Terms of Service
-description: The terms for installing and using Battery Sim Suite, including licences, simulation results and liability.
-updated: 24 August 2026
+description: The end-user licence agreement for Battery Sim Suite and its Electrochemical Models Add-On, including licences, your data, simulation results and liability.
+updated: 5 November 2026
 ---
 <p>
-  These terms cover the use of Battery Sim Suite, desktop software for battery pack simulation
-  built and maintained by Soham Dange. Installing or using the software means accepting them.
-</p>
-
-<h2>Your licence</h2>
-
-<p>
-  A licence key allows the software to be installed and used on <strong>one computer</strong>,
-  for the period shown on the key. The application records identifying details of that computer
-  the first time the key is activated, and checks them each time it starts.
+  <strong>End-User Licence Agreement, version 1, from Battery Sim Suite 0.2.0.</strong>
+  This is the same agreement the installer shows and the app shows under
+  <strong>Settings &rarr; Licences &rarr; Terms of use</strong>.
 </p>
 
 <p>
-  If you change computers, or replace enough hardware that the machine is no longer recognised,
-  email <a href="mailto:{{ site.contact_email }}">soham.perpetual@gmail.com</a> and the licence
-  will be transferred. There is no charge for this.
+  Please read these terms before installing. By installing or using Battery Sim Suite you accept
+  them. If you do not accept them, do not install or use the software.
 </p>
 
-<h2>Free licences</h2>
+<h2>1. Who this agreement is between</h2>
+
+<p>
+  This agreement is between you and Soham Dange (the &ldquo;author&rdquo;), who builds and
+  maintains Battery Sim Suite, desktop software for battery pack simulation. &ldquo;The
+  software&rdquo; means the Battery Sim Suite application, its updates, and the optional add-on
+  described in section 6.
+</p>
+
+<h2>2. Your licence</h2>
+
+<p>
+  The author grants you a personal, non-exclusive, non-transferable licence to install and use
+  the software on <strong>one computer</strong> for each licence key, for the period shown on the
+  key. The software is licensed, not sold: the author keeps ownership of it.
+</p>
+
+<p>
+  When a key is first activated, the software records identifying details of that computer (its
+  network adapter address, Windows installation ID, disk serial number and processor ID) and
+  checks them each time it confirms the licence. It confirms the licence with the author&rsquo;s
+  licence server when it can. The server then gives it a signed licence file, which lets you keep
+  working offline for a limited period. If you change computers, or replace enough hardware that
+  the machine is no longer recognised, email the address in section 13 and the licence will be
+  moved. There is no charge for this.
+</p>
+
+<h2>3. Price</h2>
 
 <p>
   Licences are currently issued free of charge. A free licence carries the same terms as any
-  other, and the same absence of warranty described below. Free availability may end at any time;
-  a licence already issued will continue until the date on it.
+  other, including the absence of warranty in section 9. Free availability may end at any time.
+  A licence already issued continues until the date on it. If a price is introduced, it will be
+  stated before you are asked to pay, and these terms will be updated to cover it.
 </p>
 
-<h2>What you may not do</h2>
+<h2>4. What you may not do</h2>
+
+<p>You may not:</p>
 
 <ul>
-  <li>Share, publish, sell or transfer a licence key to anyone else</li>
-  <li>Work around, disable or interfere with licence checking</li>
-  <li>Redistribute, repackage or resell the software</li>
-  <li>Decompile or reverse engineer it, except where law expressly permits this</li>
+  <li>share, publish, sell or transfer a licence key to anyone else;</li>
+  <li>work around, disable or interfere with the licence checks;</li>
+  <li>redistribute, repackage, rent or resell the software;</li>
+  <li>decompile, disassemble or reverse engineer the software&rsquo;s own program, except where
+    the law expressly permits it or section 6 allows it.</li>
 </ul>
 
 <p>
-  A key found to be shared across multiple machines, or used to circumvent licensing, may be
-  revoked without refund or notice.
+  A key that is shared across several computers, or used to get around the licence checks, may be
+  revoked without notice.
 </p>
 
-<h2>Simulation results</h2>
+<h2>5. Your data</h2>
+
+<p>
+  Your simulation work stays on your computer. Cells, packs, drive cycles, schedules and results
+  are stored in the <code>BatterySimSuite</code> folder in your user directory. They are not
+  uploaded and are not visible to the author. The software contacts the internet only to check
+  the licence, to check for updates, and, when you ask it to, to download the add-on. The
+  <a href="{{ '/legal/privacy/' | relative_url }}">privacy policy</a> describes what is sent and
+  why. Uninstalling the software leaves your <code>BatterySimSuite</code> folder in place. It
+  remains yours.
+</p>
+
+<h2>6. The Electrochemical Models Add-On</h2>
+
+<p>
+  The optional Electrochemical Models Add-On &ndash; powered by PyBaMM is installed separately,
+  from the software&rsquo;s Settings page. It is included in your licence at no extra charge, and
+  needs an active licence to install.
+</p>
+
+<p>
+  The add-on and the application both contain open-source software written by others, such as
+  PyBaMM and CasADi. Each such component is covered by its own licence, not by this agreement,
+  and nothing in this agreement limits the rights those licences give you. In particular, for
+  components under the GNU Lesser General Public Licence (LGPL), such as CasADi:
+</p>
+
+<ul>
+  <li>you may modify those components, or replace them with your own versions, for your own use; and</li>
+  <li>you may reverse engineer the add-on to the extent needed to debug such modifications.</li>
+</ul>
+
+<p>
+  The full list of components, their licences, and where to get their source code is on the
+  software&rsquo;s Settings page under &ldquo;Third-party notices&rdquo;. It is also in the
+  notices file inside the add-on&rsquo;s folder.
+</p>
+
+<p>
+  The add-on is not affiliated with, or endorsed by, the PyBaMM project or NumFOCUS.
+</p>
+
+<h2>7. Simulation results</h2>
 
 <div class="callout">
   <p>
     <strong>Results are estimates produced by a model, not measurements.</strong> Their accuracy
-    depends on the cell parameters, pack configuration and drive cycles you supply. Treat them as
-    one input to engineering judgement, and validate against testing before relying on them for
-    design decisions.
+    depends on the cell parameters, pack configuration, drive cycles and model choices you supply.
+    Treat them as one input to your engineering judgement, and check them against physical
+    testing before relying on them for design or safety decisions.
   </p>
 </div>
 
-<h2>No warranty</h2>
+<h2>8. Updates and availability</h2>
 
 <p>
-  The software is provided <strong>as is</strong>, without warranty of any kind, express or
-  implied, including any warranty of merchantability, fitness for a particular purpose, accuracy
-  of results, or uninterrupted operation. You use it at your own risk.
+  The software can check for updates and install them. Updates may change or remove features. You
+  do not have to install them, but support is offered for the current version only. The licence
+  server must be reachable from time to time for the software to keep confirming your licence. No
+  guarantee is given that it will always be available.
 </p>
 
-<h2>Limitation of liability</h2>
+<h2>9. No warranty</h2>
+
+<p>
+  The software is provided <strong>&ldquo;as is&rdquo;</strong>, without warranty of any kind,
+  express or implied. This includes any warranty of merchantability, fitness for a particular
+  purpose, accuracy of results, or uninterrupted operation. You use it at your own risk.
+</p>
+
+<h2>10. Limitation of liability</h2>
 
 <p>
   To the fullest extent permitted by law, the author is not liable for any indirect, incidental,
-  special or consequential loss arising from use of the software &mdash; including lost profits,
-  lost data, damaged equipment, or decisions made on the basis of simulation output. Where
-  liability cannot be excluded by law, it is limited to the amount you paid for the licence,
-  which for a free licence is nothing.
+  special or consequential loss arising from your use of the software. This includes lost
+  profits, lost data, damaged equipment, and decisions made on the basis of simulation output.
+  Where the law does not allow liability to be excluded, it is limited to the amount you paid for
+  the licence, which for a free licence is nothing. Nothing in this agreement limits liability
+  that cannot lawfully be limited.
 </p>
 
-<h2>Availability</h2>
+<h2>11. Ending this agreement</h2>
 
 <p>
-  The licence server must be reachable for the software to verify a licence. It holds a
-  short-lived offline token so brief outages do not interrupt your work, but no guarantee is made
-  about uptime, and no liability is accepted for time when the service is unavailable.
+  This agreement ends when your licence expires, when you ask for your licence to be deleted, or
+  if it is revoked for a breach of these terms. When it ends, the software stops running. You may
+  end it at any time by uninstalling the software.
 </p>
 
-<h2>Updates</h2>
+<h2>12. Changes to these terms</h2>
 
 <p>
-  The application can check for and install updates. Updates may change or remove features. You
-  are not required to install them, but support is offered for the current version.
+  These terms may change. The version and date at the top will change with them, and the current
+  terms will always be on the Battery Sim Suite website. If you keep using the software after a
+  change, you accept the revised terms.
 </p>
 
-<h2>Ending a licence</h2>
+<h2>13. Contact</h2>
 
 <p>
-  A licence ends when its expiry date passes, when you ask for it to be deleted, or if it is
-  revoked for a breach of these terms. When a licence ends the software stops running. Your
-  simulation files remain on your own computer and stay yours.
-</p>
-
-<h2>Changes to these terms</h2>
-
-<p>
-  These terms may change; the date at the top will change with them. Continuing to use the
-  software after a change means accepting the revised terms.
-</p>
-
-<h2>Contact</h2>
-
-<p>
-  Questions about these terms can go to
-  <a href="mailto:{{ site.contact_email }}">soham.perpetual@gmail.com</a>.
+  Questions about these terms:
+  <a href="mailto:{{ site.contact_email }}">soham.perpetual@gmail.com</a>
 </p>

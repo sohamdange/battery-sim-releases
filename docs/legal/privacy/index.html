@@ -2,7 +2,7 @@
 layout: legal
 title: Privacy Policy
 description: What Battery Sim Suite collects, why, and who else is involved. Your simulation work never leaves your computer.
-updated: 24 August 2026
+updated: 5 November 2026
 ---
 <p>
   Battery Sim Suite is desktop software for battery pack simulation. This policy explains what
@@ -15,8 +15,8 @@ updated: 24 August 2026
     <strong>Your simulation work never leaves your computer.</strong> Cells, packs, drive cycles,
     schedules and results are stored in a folder on your own machine
     (<code>BatterySimSuite</code> in your user directory). They are not uploaded, not backed up
-    to us, and not visible to us. The only thing the software sends anywhere is licence
-    information.
+    to us, and not visible to us. The software contacts the internet only to check your licence,
+    to check for updates, and, when you ask it to, to download the Electrochemical Models Add-On.
   </p>
 </div>
 
@@ -47,6 +47,11 @@ updated: 24 August 2026
       <td>Each time the application starts</td>
       <td>To detect misuse, such as a single key being used from many places at once</td>
     </tr>
+    <tr>
+      <td>The signed licence file the licence server issued to your computer</td>
+      <td>When you install the Electrochemical Models Add-On from Settings</td>
+      <td>To confirm the licence is active before the server says which add-on to download</td>
+    </tr>
   </tbody>
 </table>
 
@@ -55,6 +60,12 @@ updated: 24 August 2026
   software. They are stored so that the licence server can tell whether a later request comes
   from the same machine. They are not used to identify you personally, and they are not combined
   with anything else.
+</p>
+
+<p>
+  Checking for updates sends nothing about you or your computer: the software asks the licence
+  server which version is current, and the server sees only the request itself, as any website
+  does.
 </p>
 
 <h2>What is not collected</h2>
@@ -68,12 +79,12 @@ updated: 24 August 2026
 
 <h2>Who else is involved</h2>
 
-<p>Three services are used to run the licensing system. None of them receives your simulation work.</p>
+<p>Three services are used to run the licensing system and deliver the software. None of them receives your simulation work.</p>
 
 <ul>
   <li><strong>Railway</strong> hosts the licence server and its database, which holds your email address, licence key and the hardware identifiers described above.</li>
   <li><strong>Google</strong> delivers the email containing your licence key, sent from a Gmail account.</li>
-  <li><strong>GitHub</strong> hosts the installer downloads and the update files. Downloading an installer or an update reaches GitHub directly.</li>
+  <li><strong>GitHub</strong> hosts the installer downloads, the update files and the Electrochemical Models Add-On. Downloading any of them reaches GitHub directly.</li>
 </ul>
 
 <p>
