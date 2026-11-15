@@ -13,7 +13,7 @@
 - id: sims
   tab: Simulations
   image: /screenshots/sim-library.png
-  alt: Simulation library listing completed runs with status badges
+  alt: Simulation library listing runs with status, pack, simulation cycle, end SOC and peak temperature
   caption: Simulation Library. Every past run with status, end SOC, peak temperature and one-click access to results.
 - id: results
   tab: Results
@@ -21,7 +21,7 @@
   alt: Simulation results with SOC and temperature summaries and plots
   caption: Results. End SOC and peak temperature, then pack, cell, spatial and overlapping plots with unit controls.
 - id: cycles
-  tab: Cycle Builder
-  image: /screenshots/drive-cycles.png
-  alt: Simulation cycle library with calendar rules
-  caption: Cycle Builder. Compose scenarios from sub-cycles and drive cycles, then map them to calendar days.
+  tab: Scenario Builder
+  image: /screenshots/schedule-library.png
+  alt: Schedule library listing simulation cycles, including a ten-year cycle
+  caption: Simulation Scenario Builder. Build sequences into day profiles and year profiles, then run year profiles in order for as many years as you need.

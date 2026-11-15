@@ -1,6 +1,6 @@
 ---
 title: Features
-description: Cell library, pack builder, calendar drive-cycle schedules, a per-cell RC solver, a pack thermal model, electrochemical engines with ageing and built-in results analysis, all in one Windows desktop app.
+description: Cell library, pack builder, multi-year load schedules, a per-cell RC solver, a pack thermal model, electrochemical engines with ageing and built-in results analysis, all in one Windows desktop app.
 eyebrow: "// Features"
 hero_title: Everything you need to simulate a battery pack
 hero_lede: From cell characterisation to year-long pack missions, in one desktop application that keeps your data on your own computer.
@@ -49,7 +49,7 @@ hero_lede: From cell characterisation to year-long pack missions, in one desktop
       <h2 class="section-title">Any series and parallel layout</h2>
       <p class="section-lede">Arrange cells in layers, wire them in series and parallel, and let the app work out the pack&rsquo;s voltage, capacity and limits.</p>
       <ul class="checks">
-        <li>{% include icon.html name="check" px=18 %}Rectangular or diagonal cell layouts, stacked in multiple layers, with 2D and 3D previews</li>
+        <li>{% include icon.html name="check" px=18 %}Rectangular or diagonal cell layouts, with a preview of the layout and its parallel groups</li>
         <li>{% include icon.html name="check" px=18 %}Column-parallel, row-parallel or custom parallel groups</li>
         <li>{% include icon.html name="check" px=18 %}Connections laid out for you; you set the series and parallel link resistances</li>
         <li>{% include icon.html name="check" px=18 %}Thermal connections between neighbouring cells, worked out from their positions and editable</li>
@@ -65,27 +65,27 @@ hero_lede: From cell characterisation to year-long pack missions, in one desktop
     </div>
   </div>
   <div class="wrap">
-    <div class="shot-row reveal">{% include shot.html id="pack-builder" %}<p class="muted">The Pack Builder shows the layout, the pack summary and a 3D preview as you edit.</p></div>
+    <div class="shot-row reveal">{% include shot.html id="pack-builder" %}<p class="muted">The Pack Builder shows the layout and parallel groups, and the pack summary (voltage, capacity, energy) as you edit.</p></div>
   </div>
 </section>
 
 <section class="section feature" id="cycles">
   <div class="wrap split">
     <div class="split-copy reveal">
-      <p class="eyebrow">// 03 &middot; Drive cycles &amp; schedules</p>
-      <h2 class="section-title">Real cycles, mapped onto a real year</h2>
-      <p class="section-lede">Go beyond a single test profile. Build up the way a pack is actually used, from single steps to a full calendar.</p>
+      <p class="eyebrow">// 03 &middot; Load schedules</p>
+      <h2 class="section-title">Real use, day by day and year by year</h2>
+      <p class="section-lede">Go beyond a single test profile. Build up the way a pack is actually used, from single steps to a full calendar, and run it for years.</p>
       <ul class="checks">
-        <li>{% include icon.html name="check" px=18 %}<span><strong>Sub-cycles</strong>: current, power or rest steps, or steps that end on a voltage or SOC condition</span></li>
-        <li>{% include icon.html name="check" px=18 %}Import a recorded schedule from CSV or Excel as a sub-cycle</li>
-        <li>{% include icon.html name="check" px=18 %}<span><strong>Drive cycles</strong>: sub-cycles chained into one day of use, up to 24 hours</span></li>
-        <li>{% include icon.html name="check" px=18 %}<span><strong>Simulation cycles</strong>: calendar rules by month, weekday or date, with a default for every other day</span></li>
-        <li>{% include icon.html name="check" px=18 %}Sub-cycle, drive-cycle and simulation-cycle libraries with search and sorting</li>
+        <li>{% include icon.html name="check" px=18 %}<span><strong>Sequences</strong>: current, C-rate, power or voltage steps, or steps that end on a voltage, current, SOC or power condition</span></li>
+        <li>{% include icon.html name="check" px=18 %}Import a recorded load from CSV or Excel as a sequence</li>
+        <li>{% include icon.html name="check" px=18 %}<span><strong>Day profiles</strong>: sequences in order, each at its own ambient temperature, up to 24 hours</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span><strong>Year profiles</strong>: calendar rules by month, weekday or date, with a default for every other day</span></li>
+        <li>{% include icon.html name="check" px=18 %}<span><strong>Simulation cycles</strong>: year profiles in order, each repeated, for studies over many years. The pack carries its state and ageing from one year into the next</span></li>
       </ul>
     </div>
     <figure class="frame reveal">
-      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Cycle Builder</span></div>
-      <img src="{{ '/screenshots/drive-cycles.png' | relative_url }}" alt="Simulation cycle library with calendar rules" loading="lazy" width="1440" height="900">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Simulation Scenario Builder</span></div>
+      <img src="{{ '/screenshots/schedule-library.png' | relative_url }}" alt="Schedule library listing simulation cycles, including a ten-year cycle" loading="lazy" width="1440" height="900">
     </figure>
   </div>
 </section>
@@ -132,7 +132,7 @@ hero_lede: From cell characterisation to year-long pack missions, in one desktop
       <ul class="checks">
         <li>{% include icon.html name="check" px=18 %}Cell self-heating from resistive, RC and optional entropic heat</li>
         <li>{% include icon.html name="check" px=18 %}Heat flows between linked cells through the pack&rsquo;s thermal connections</li>
-        <li>{% include icon.html name="check" px=18 %}Cooling to the air, with its temperature taken from the drive cycle, and to a coolant plate at a set temperature</li>
+        <li>{% include icon.html name="check" px=18 %}Cooling to the air, with its temperature taken from the day profile, and to a coolant plate at a set temperature</li>
         <li>{% include icon.html name="check" px=18 %}Cooling set per group of cells, with per-cell overrides, so a large pack needs only a few numbers</li>
         <li>{% include icon.html name="check" px=18 %}Works with every cell model, built-in and add-on</li>
       </ul>
@@ -146,6 +146,7 @@ hero_lede: From cell characterisation to year-long pack missions, in one desktop
   </div>
   <div class="wrap">
     <div class="shot-row reveal">{% include shot.html id="thermal-setup" %}<p class="muted">Thermal connections and cooling are set in the Pack Builder, by group of cells, with per-cell overrides.</p></div>
+    <div class="shot-row reveal">{% include shot.html id="thermal-map" %}<p class="muted">The spatial view shows every cell&rsquo;s temperature across the pack at any moment of the run. Here, air enters from one side of a 192-cell module.</p></div>
   </div>
 </section>
 
@@ -161,6 +162,7 @@ hero_lede: From cell characterisation to year-long pack missions, in one desktop
         <li>{% include icon.html name="check" px=18 %}Choose what each run records, for smaller files and faster runs</li>
         <li>{% include icon.html name="check" px=18 %}Every result records the model and settings that produced it</li>
         <li>{% include icon.html name="check" px=18 %}Readable logs that say what each step is doing, and why a run stopped</li>
+        <li>{% include icon.html name="check" px=18 %}<span><strong>Workspaces</strong>: keep separate libraries in their own folders, one open at a time, and copy cells, packs and schedules between them</span></li>
       </ul>
     </div>
     <figure class="frame reveal">

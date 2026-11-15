@@ -10,7 +10,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
     <a href="#model">How it fits together</a>
     <a href="#step-1">1 Cell</a>
     <a href="#step-2">2 Pack</a>
-    <a href="#step-3">3 Sub-cycles</a>
+    <a href="#step-3">3 Sequences</a>
     <a href="#step-4">4 Schedule</a>
     <a href="#step-5">5 Run</a>
     <a href="#step-6">6 Results</a>
@@ -23,12 +23,13 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
     <div class="section-head reveal">
       <p class="eyebrow">// Before you start</p>
       <h2 class="section-title">How the pieces fit together</h2>
-      <p class="section-lede">A simulation combines a <strong>pack</strong> (built from one <strong>cell</strong>) with a <strong>simulation cycle</strong> (the load it sees, day by day). The load is built in three levels, so nothing is duplicated.</p>
+      <p class="section-lede">A simulation combines a <strong>pack</strong> (built from one <strong>cell</strong>) with a <strong>simulation cycle</strong> (the load it sees, day by day). The load is built in four levels, so nothing is duplicated.</p>
     </div>
     <ol class="hierarchy reveal">
-      <li><span class="mono">STEPS</span><strong>Sub-cycle</strong><small>Current, power or rest steps, e.g. 1 C charge for 30 min</small></li>
-      <li><span class="mono">ONE DAY</span><strong>Drive cycle</strong><small>Sub-cycles in order, up to 24 hours</small></li>
-      <li><span class="mono">CALENDAR</span><strong>Simulation cycle</strong><small>Rules that assign drive cycles to days</small></li>
+      <li><span class="mono">STEPS</span><strong>Sequence</strong><small>Current, power or rest steps, e.g. 1 C discharge to 3.0 V</small></li>
+      <li><span class="mono">ONE DAY</span><strong>Day profile</strong><small>Sequences in order, up to 24 hours</small></li>
+      <li><span class="mono">ONE YEAR</span><strong>Year profile</strong><small>Rules that assign day profiles to days</small></li>
+      <li><span class="mono">YEARS</span><strong>Simulation cycle</strong><small>Year profiles in order, each repeated</small></li>
     </ol>
   </div>
 </section>
@@ -56,7 +57,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
         <div>
           <h2>Build a pack</h2>
           <p class="muted">In the app: <strong>Pack Builder</strong></p>
-          <p>Choose the cell, then arrange cells in layers using a rectangular or diagonal layout. Pick how they are wired (column-parallel, row-parallel or custom groups) and set the series and parallel link resistances. The builder shows the resulting voltage, capacity and limits, with 2D and 3D previews.</p>
+          <p>Choose the cell, then arrange cells in layers using a rectangular or diagonal layout. Pick how they are wired (column-parallel, row-parallel or custom groups) and set the series and parallel link resistances. The builder shows the layout and the resulting voltage, capacity and energy as you edit.</p>
           <p>For a thermal study, check the cell-to-cell thermal connections and set cooling to the air or a coolant plate.</p>
           <div class="callout"><p><strong>Common mistake:</strong> mixing up column-parallel and row-parallel. The name says which direction is in parallel, not which is in series.</p></div>
           {% include shot.html id="pack-builder" %}
@@ -66,11 +67,11 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
       <li class="guide-step reveal" id="step-3">
         <span class="guide-num mono">03</span>
         <div>
-          <h2>Create sub-cycles</h2>
-          <p class="muted">In the app: <strong>Drive Builder &rarr; Sub-cycle Builder</strong></p>
-          <p>A sub-cycle is a list of steps: charge, discharge or rest, in current or power, for a set time, or until a voltage or SOC condition is met. Build them in the table, or upload a recorded schedule from CSV or Excel.</p>
+          <h2>Create sequences</h2>
+          <p class="muted">In the app: <strong>Simulation Scenario Builder &rarr; Sequence Library</strong></p>
+          <p>A sequence is a list of steps: charge, discharge or rest, in current, C-rate, power or voltage, for a set time, or until a trigger such as a cell voltage or pack SOC fires. Build them in the table, or import a recorded load from CSV or Excel.</p>
           <div class="callout"><p><strong>Common mistake:</strong> no rest between charge and discharge. Real cells need rest for their voltage to relax.</p></div>
-          {% include shot.html id="subcycle-builder" %}
+          {% include shot.html id="sequence-builder" %}
         </div>
       </li>
 
@@ -78,10 +79,10 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
         <span class="guide-num mono">04</span>
         <div>
           <h2>Assemble the schedule</h2>
-          <p class="muted">In the app: <strong>Drive Cycle Builder</strong>, then <strong>Simulation Cycle Builder</strong></p>
-          <p>Chain sub-cycles into a <strong>drive cycle</strong>: one day of use, up to 24 hours. Then create a <strong>simulation cycle</strong> and use its Calendar tab to assign drive cycles to days, for example weekdays commute, weekends highway, with a default rule for every other day.</p>
+          <p class="muted">In the app: <strong>Simulation Scenario Builder</strong></p>
+          <p>Chain sequences into a <strong>day profile</strong>: one day of use, up to 24 hours, each sequence at its own ambient temperature. Then create a <strong>year profile</strong> and use its Calendar tab to assign day profiles to days, for example weekdays commute, weekends highway, with a default for every other day. Finally put one or more year profiles in order in a <strong>simulation cycle</strong>, each repeated as many times as you need: one year, or a heavy first year followed by nine lighter ones.</p>
           <div class="callout"><p><strong>Common mistake:</strong> conditions on one rule combine with AND. Months = January and Days = Monday fires only on Mondays in January. The first matching rule wins, so order rules from most to least specific.</p></div>
-          {% include shot.html id="calendar" %}
+          {% include shot.html id="simulation-cycle" %}
         </div>
       </li>
 
@@ -90,7 +91,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
         <div>
           <h2>Configure and run</h2>
           <p class="muted">In the app: <strong>Simulations</strong></p>
-          <p>Select the pack and the simulation cycle. Choose the model first, then the cell configuration, then set the starting SOC, cell temperature and ambient temperature. Optionally switch on the thermal model, give cells their own capacity and resistance spread, and choose what the run records.</p>
+          <p>Select the pack and the simulation cycle. Choose the model first, then the cell configuration, then set the starting SOC and cell temperature. Optionally switch on the thermal model, give cells their own capacity and resistance spread, set voltage limits, add end triggers such as a state of health for long ageing studies, and choose what the run records.</p>
           <p>Runs show live progress. You can start several at once, and stop one at any point while keeping the results so far.</p>
           <div class="callout"><p><strong>Common mistake:</strong> a high starting SOC with a charge-heavy schedule. The run stops at the upper voltage cut-off soon after it starts.</p></div>
           {% include shot.html id="simulation-setup" %}
@@ -127,7 +128,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
       </details>
       <details>
         <summary>Does the app include standard drive cycles?</summary>
-        <p>No. Build your own from steps, or import a recorded schedule from CSV or Excel as a sub-cycle.</p>
+        <p>No. Build your own from steps, or import a recorded load from CSV or Excel as a sequence.</p>
       </details>
       <details>
         <summary>Can a pack mix different cells?</summary>

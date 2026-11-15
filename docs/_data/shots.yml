@@ -5,11 +5,11 @@
 # placeholder is shown, and as soon as it exists the screenshot appears.
 #
 # Capture guidance for every image:
-#   - Battery Sim Suite 0.2.0, window at 1440 x 900 (16:10), dark theme
+#   - Battery Sim Suite 0.3.0, window at 1440 x 900 (16:10), dark theme
 #   - realistic demo data, no customer names or personal file paths
 #   - PNG, under ~500 KB if possible
 
-# ---- Existing: still show the old "Battery Toolkit" name, replace ----
+# ---- Home page tour and Features page ----
 - id: dashboard
   file: dashboard.png
   title: Home dashboard
@@ -18,67 +18,72 @@
 - id: cells
   file: cells.png
   title: Cell Library
-  alt: Cell library table listing several cell models
-  capture: Cell Library table with 5-8 cells of mixed form factors.
+  alt: Cell library listing LG M50T cells with their models and readiness
+  capture: Cell Library with a few cells and their model configurations.
 - id: sims
   file: sim-library.png
   title: Simulation Library
-  alt: Simulation library listing runs with status badges
-  capture: Simulation Library with completed, running and stopped runs, showing status badges and a progress bar.
+  alt: Simulation library listing runs with status, pack, simulation cycle, end SOC and peak temperature
+  capture: Simulation Library in list view with completed runs.
 - id: results
   file: results.png
   title: Results
-  alt: Simulation results with SOC and temperature summaries and plots
-  capture: Results of a completed pack run with the thermal model on, showing end SOC, peak temperature and the plots.
+  alt: Pack voltage over a three-day run in the results plots
+  capture: Results plots of a completed pack run, Pack Level tab.
 - id: cycles
-  file: drive-cycles.png
-  title: Simulation cycle library
-  alt: Simulation cycle library with calendar rules
-  capture: Simulation Cycle library or builder, showing several cycles and their calendar rules.
+  file: schedule-library.png
+  title: Simulation Scenario Builder
+  alt: Schedule library listing simulation cycles, including a ten-year cycle
+  capture: Schedule Library with simulation cycles, one of them multi-year.
 
-# ---- New in 0.2.0 ----
+# ---- Guide and feature pages ----
 - id: cell-builder
   file: cell-builder.png
   title: Cell Builder
-  alt: Cell Builder with cell details and a named configuration
-  capture: Cell Builder editing a cell, with its configurations list showing one circuit and one electrochemical configuration.
+  alt: Cell Builder Models tab listing named electrochemical configurations
+  capture: Cell Builder, Models tab, showing several configurations of one cell.
 - id: pack-builder
   file: pack-builder.png
   title: Pack Builder
-  alt: Pack Builder with a multi-layer layout and 3D preview
-  capture: Pack Builder with a multi-layer pack, the pack summary (voltage, capacity) and the 3D preview visible.
+  alt: Pack Builder layout of a 12 by 16 cell module with its parallel groups
+  capture: Pack Builder layer layout with parallel groups coloured.
 - id: thermal-setup
   file: thermal-setup.png
-  title: Thermal connections and cooling
-  alt: Pack Builder thermal connections and cooling settings
-  capture: Pack Builder thermal connections view and the cooling settings (air and coolant plate) for the same pack.
-- id: subcycle-builder
-  file: subcycle-builder.png
-  title: Sub-cycle Builder
-  alt: Sub-cycle Builder step table with charge, rest and discharge steps
-  capture: Sub-cycle Builder table with a mix of current, power, rest and trigger steps.
-- id: calendar
-  file: sim-cycle-calendar.png
-  title: Simulation cycle calendar
-  alt: Simulation Cycle Builder calendar tab with rules assigning drive cycles to days
-  capture: Simulation Cycle Builder Calendar tab with weekday, weekend and date-range rules plus a default rule.
+  title: Thermal connections
+  alt: Pack Builder thermal connections between neighbouring cells, with their thermal resistances
+  capture: Pack Builder thermal connections table and connection diagram for the same pack.
+- id: thermal-map
+  file: thermal-map.png
+  title: Temperature across the pack
+  alt: Spatial heat map of cell temperatures across a 192-cell module, warmer on the side away from the air inlet
+  capture: Results, Spatial tab, cell temperature part-way through an air-cooled run.
+- id: sequence-builder
+  file: sequence-builder.png
+  title: Sequence editor
+  alt: Sequence editor step table with discharge, rest, constant-current and constant-voltage charge steps
+  capture: Editing a sequence with a mix of trigger-only and fixed steps.
+- id: simulation-cycle
+  file: simulation-cycle.png
+  title: Simulation cycle
+  alt: Simulation cycle with a heavy first year followed by nine years of residential use
+  capture: Editing a multi-year simulation cycle with two year-profile lines.
 - id: simulation-setup
   file: simulation-setup.png
   title: Simulation setup
-  alt: Simulation setup with pack, schedule, model and initial conditions
-  capture: Simulation setup with a pack and simulation cycle selected, the model chosen, initial conditions, and the thermal switch on.
+  alt: Simulation setup with a pack and a ten-year simulation cycle selected
+  capture: Simulation setup, Selection step, with a pack and a multi-year simulation cycle chosen.
 - id: engine-picker
   file: engine-picker.png
   title: Choosing a model
-  alt: Engine selector listing built-in and PyBaMM models with speed and fidelity
-  capture: Engine selector open on a cell that can run every model, showing built-in RC, Thevenin, SPM, SPMe and DFN.
+  alt: Model selector listing the built-in and PyBaMM models, with those the cell cannot run marked unavailable
+  capture: Model selector open in the run setup.
 - id: ageing-panel
   file: ageing-panel.png
   title: Ageing panel
-  alt: Ageing panel showing state of health and capacity loss over time
-  capture: Results Ageing panel from an SPM or DFN run with SEI growth on, showing state of health and losses over time.
+  alt: Ageing panel showing pack state of health, capacity lost and the weakest cell over a run
+  capture: Results Ageing panel from an SPM run with SEI growth on.
 - id: addon-install
   file: addon-install.png
-  title: Installing the add-on
-  alt: Settings About section with the Electrochemical Models Add-On install controls
-  capture: Settings, About section, showing the Electrochemical Models Add-On card with its Install button (or installed status).
+  title: The add-on in Settings
+  alt: Settings About section showing the Electrochemical Models Add-On installed, version 11.1
+  capture: Settings, About section, showing the Electrochemical Models Add-On card.

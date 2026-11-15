@@ -5,9 +5,9 @@ layout: default
   <div class="circuit-bg" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <a class="hero-badge" href="{{ '/features/electrochemical/' | relative_url }}">
+      <a class="hero-badge" href="{{ '/features/' | relative_url }}#cycles">
         <span class="hero-badge-tag">New</span>
-        New in 0.2.0: electrochemical models, ageing and pack thermal
+        New in 0.3.0: multi-year simulation cycles and workspaces
         {% include icon.html name="arrow" px=14 %}
       </a>
       <h1 class="hero-title">Simulate every cell<br><span class="charge-text">before you build the pack.</span></h1>
@@ -87,7 +87,7 @@ layout: default
         <span class="flow-num mono">03</span>
         <span class="flow-icon">{% include icon.html name="cycle" px=22 %}</span>
         <h3>Compose the cycle</h3>
-        <p>Current, power and trigger steps, or recorded schedules from CSV and Excel, mapped onto a calendar year.</p>
+        <p>Current, power and trigger steps, or recorded loads from CSV and Excel, mapped onto a calendar year and run for as many years as you need.</p>
         <a class="link-arrow" href="{{ '/features/' | relative_url }}#cycles">Cycle Builder {% include icon.html name="arrow" px=14 %}</a>
       </li>
       <li class="flow-step reveal">
@@ -162,7 +162,7 @@ layout: default
       <article class="card reveal">
         <span class="card-icon">{% include icon.html name="bolt" %}</span>
         <h3>EV and storage teams</h3>
-        <p>Compare pack layouts against energy and voltage targets. Run real drive cycles and year-long calendars before committing to a geometry or chemistry.</p>
+        <p>Compare pack layouts against energy and voltage targets. Run real duty cycles and multi-year calendars before committing to a geometry or chemistry.</p>
       </article>
       <article class="card reveal">
         <span class="card-icon">{% include icon.html name="doc" %}</span>
