@@ -413,6 +413,8 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(3px);
 .callout { border: 1px solid var(--line-2); border-left: 3px solid var(--cyan); background: var(--cyan-dim); border-radius: 10px; padding: 16px 20px; margin: 0 0 20px; }
 .callout p { margin: 0; color: var(--text); }
 .callout--charge { border-left-color: var(--lime); background: var(--lime-dim); }
+.app-checksum { margin-top: 10px; }
+.app-checksum code { font-size: 11px; word-break: break-all; user-select: all; }
 .checksums { border: 1px solid var(--line); border-radius: 10px; padding: 0 16px; margin: 4px 0 16px; background: var(--bg-2); }
 .checksums summary { cursor: pointer; padding: 14px 0; font: 600 14px var(--font-display); }
 .table-wrap { overflow-x: auto; }

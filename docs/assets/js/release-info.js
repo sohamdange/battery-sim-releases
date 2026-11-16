@@ -13,6 +13,9 @@
  *   app-version, app-date, app-size      text
  *   app-download                         <a> href -> installer
  *   app-page                             <a> href -> release page
+ *   app-sha256                           text: the installer's SHA-256, as GitHub
+ *                                        computed it from the stored file; shown
+ *                                        by unhiding app-sha256-line
  *   app-notes                            <ul> filled with release notes
  *   addon-name, addon-date, addon-size   text
  *   addon-download                       <a> href -> add-on zip
@@ -26,7 +29,8 @@
   "use strict";
 
   var API = "https://api.github.com/repos/sohamdange/battery-sim-releases/releases?per_page=50";
-  var CACHE_KEY = "bss-releases-v1";
+  // v2: the cache also keeps each file's SHA-256 (digest).
+  var CACHE_KEY = "bss-releases-v2";
   var CACHE_MS = 10 * 60 * 1000;
 
   if (!document.querySelector("[data-rel]")) return;
@@ -50,6 +54,11 @@
   function fmtSize(bytes) {
     if (!bytes) return "";
     return (bytes / (1024 * 1024)).toFixed(0) + " MB";
+  }
+  // "sha256:<64 hex>" from the API, as bare lowercase hex, or "" for anything else.
+  function sha256Of(file) {
+    var m = /^sha256:([0-9a-f]{64})$/i.exec((file && file.digest) || "");
+    return m ? m[1].toLowerCase() : "";
   }
   function asset(rel, test) {
     return (rel.assets || []).filter(function (a) { return test(a.name.toLowerCase()); })[0];
@@ -88,6 +97,13 @@
       setText("app-size", fmtSize(exe.size));
       setHref("app-download", exe.browser_download_url);
       setHref("app-page", app.html_url);
+      // Shown only when GitHub reports one; otherwise the line stays hidden and
+      // the release page (linked in the help text) still lists it.
+      var sha = sha256Of(exe);
+      if (sha) {
+        setText("app-sha256", sha);
+        all("app-sha256-line").forEach(function (el) { el.hidden = false; });
+      }
       all("app-notes").forEach(function (ul) { fillList(ul, noteLines(app.body), 6); });
     }
 
@@ -189,7 +205,8 @@
           tag_name: r.tag_name, name: r.name, body: r.body, html_url: r.html_url,
           published_at: r.published_at, draft: r.draft, prerelease: r.prerelease,
           assets: (r.assets || []).map(function (a) {
-            return { name: a.name, size: a.size, browser_download_url: a.browser_download_url };
+            return { name: a.name, size: a.size, browser_download_url: a.browser_download_url,
+                     digest: a.digest };
           })
         };
       });
