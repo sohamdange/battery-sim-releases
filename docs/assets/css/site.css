@@ -191,7 +191,7 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(3px);
 }
 .hero-badge:hover { color: var(--text); border-color: var(--lime); }
 .hero-badge-tag { background: var(--lime); color: var(--on-lime); font: 700 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
-.hero-title { font-size: clamp(38px, 5vw, 64px); letter-spacing: -.045em; line-height: 1.02; }
+.hero-title { font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -.045em; line-height: 1.02; }
 .charge-text {
   background: linear-gradient(90deg, var(--lime) 0%, var(--cyan) 55%, var(--lime) 100%);
   background-size: 200% 100%;
