@@ -12,6 +12,8 @@ published: false
 title: Example study title
 summary: One or two sentences describing the problem and the outcome.
 date: 2026-01-01
+authors: Jane Doe, John Smith        # optional
+event: Example Conference 2026       # optional, shown as "Presented at"
 organisation: Example University
 sector: EV powertrain
 models: [RC equivalent-circuit, DFN]

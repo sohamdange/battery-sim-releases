@@ -13,6 +13,8 @@ layout: default
       <h1 class="page-title">{{ page.title }}</h1>
       {%- if page.summary %}<p class="page-lede">{{ page.summary }}</p>{% endif %}
       <dl class="study-meta">
+        {%- if page.authors %}<div><dt>Authors</dt><dd>{{ page.authors }}</dd></div>{% endif %}
+        {%- if page.event %}<div><dt>Presented at</dt><dd>{{ page.event }}</dd></div>{% endif %}
         {%- if page.organisation %}<div><dt>Organisation</dt><dd>{{ page.organisation }}</dd></div>{% endif %}
         {%- if page.sector %}<div><dt>Sector</dt><dd>{{ page.sector }}</dd></div>{% endif %}
         {%- if page.models %}<div><dt>Models</dt><dd>{{ page.models | join: ", " }}</dd></div>{% endif %}
