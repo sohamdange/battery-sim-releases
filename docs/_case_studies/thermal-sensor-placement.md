@@ -80,7 +80,7 @@ Michigan (15–16 October). Click the poster for the full-size image.
 
 [![The full A0 conference poster: problem, workflow, simulation model, model building, validation and conclusions]({{ '/case-studies/images/sensor-placement-poster.jpg' | relative_url }})]({{ '/case-studies/images/sensor-placement-poster.png' | relative_url }})
 
-Download: [poster as PDF (2 MB)]({{ '/case-studies/images/sensor-placement-poster.pdf' | relative_url }}) · [full-size image (1.8 MB)]({{ '/case-studies/images/sensor-placement-poster.png' | relative_url }})
+Download: [full-size poster image (1.8 MB)]({{ '/case-studies/images/sensor-placement-poster.png' | relative_url }})
 
 ## What's next
 
