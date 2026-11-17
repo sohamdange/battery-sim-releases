@@ -40,7 +40,7 @@ defaults:
 
 # Turn the Case Studies page on in the header and footer once the first
 # study is published.
-show_case_studies: false
+show_case_studies: true
 
 exclude:
   - README.md
