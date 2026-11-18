@@ -618,3 +618,7 @@ td code { font-size: 12px; word-break: break-all; }
 .shot-row > p { margin: 0; }
 .guide-step .shot { margin-top: 24px; }
 @media (max-width: 920px) { .shot-row { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+
+/* ---------- Videos page: a video in the same window frame as the screenshots ---------- */
+.video-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+.video-chapters { margin-top: 14px; font-size: 13px; letter-spacing: .04em; color: var(--dim); }
