@@ -1,0 +1,21 @@
+# Local preview only: builds the site with the same Jekyll and plugins as GitHub Pages.
+#   cd docs
+#   bundle install                      (once)
+#   bundle exec jekyll serve --livereload
+# Then open http://localhost:4000/battery-sim-releases/
+# GitHub Pages ignores this file (it is in _config.yml's exclude list).
+source "https://rubygems.org"
+
+gem "github-pages", group: :jekyll_plugins
+
+# Ruby 3 no longer bundles these; Jekyll 3 needs them for `serve` and on Windows.
+gem "webrick"
+gem "csv"
+gem "base64"
+gem "bigdecimal"
+gem "logger"
+
+platforms :windows do
+  gem "tzinfo-data"
+  gem "wdm", ">= 0.1.0"
+end

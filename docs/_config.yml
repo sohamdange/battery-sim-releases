@@ -35,6 +35,9 @@ defaults:
     values:
       layout: page
       image: /assets/img/og.png
+      # Loads release-info.js, so the header's Download button links straight
+      # to the latest installer on every page.
+      live_release: true
   - scope: { path: "", type: case_studies }
     values: { layout: case-study }
 
@@ -47,3 +50,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - .bundle

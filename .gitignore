@@ -1,2 +1,9 @@
 # Local-only files (e.g. guides emailed to collaborators), never committed
 collaborator-docs/
+
+# Local website preview (Jekyll): installed packages and build output
+docs/vendor/
+docs/.bundle/
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata

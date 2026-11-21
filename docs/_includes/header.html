@@ -11,14 +11,12 @@
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
         {%- for item in site.data.nav.main %}
+        {%- if item.url == '/case-studies/' and site.show_case_studies != true %}{% continue %}{% endif %}
         {%- assign item_url = item.url | relative_url %}
         <li><a href="{{ item_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
         {%- endfor %}
-        {%- if site.show_case_studies %}
-        <li><a href="{{ '/case-studies/' | relative_url }}"{% if page.url == '/case-studies/' %} aria-current="page"{% endif %}>Case studies</a></li>
-        {%- endif %}
       </ul>
-      <a class="btn btn-charge btn-sm" href="{{ '/downloads/' | relative_url }}">
+      <a class="btn btn-charge btn-sm" data-rel="app-download" href="{{ '/downloads/' | relative_url }}" title="Download the latest Battery Sim Suite installer for Windows">
         {% include icon.html name="download" px=16 %}Download
       </a>
     </nav>

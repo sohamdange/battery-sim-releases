@@ -1,29 +1,58 @@
 ---
 title: Getting started
-description: From a fresh install to your first Battery Sim Suite simulation result in six steps, with the data model explained and the common mistakes to avoid.
+description: Install Battery Sim Suite and activate your free licence, run your first simulation in six steps, take a tour of the app, learn from the example videos and add the electrochemical engines.
 eyebrow: "// Getting started"
-hero_title: Your first simulation, step by step
-hero_lede: From a fresh install to your first result. Each step builds a reusable piece of your library, so the next study starts further along.
+hero_title: From install to your first result
+hero_lede: Install the app, build your first simulation step by step, then learn from a tour and the examples that come with it.
 ---
 <nav class="subnav" aria-label="On this page">
   <div class="wrap subnav-inner">
-    <a href="#model">How it fits together</a>
+    <a href="#install">Install</a>
+    <a href="#model">First simulation</a>
     <a href="#step-1">1 Cell</a>
     <a href="#step-2">2 Pack</a>
     <a href="#step-3">3 Sequences</a>
     <a href="#step-4">4 Schedule</a>
     <a href="#step-5">5 Run</a>
     <a href="#step-6">6 Results</a>
+    <a href="#tour">Tour</a>
+    <a href="#examples">Examples</a>
+    <a href="#addon">Add-on</a>
     <a href="#faq">FAQ</a>
   </div>
 </nav>
 
-<section class="section section--tight" id="model">
+<section class="section section--panel" id="install">
+  <div class="wrap wrap--narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Part 1 &middot; 1 min 15 s</p>
+      <h2 class="section-title">Install the app and activate it</h2>
+      <p class="section-lede">About a minute from download to the app opening with its examples ready.</p>
+    </div>
+    <figure class="frame video-frame">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Install and licence</span></div>
+      <video controls preload="none" playsinline width="1920" height="1080" poster="{{ '/assets/video/install-and-licence.jpg' | relative_url }}">
+        <source src="{{ '/assets/video/install-and-licence.mp4' | relative_url }}" type="video/mp4">
+        Your browser can't play this video. <a href="{{ '/assets/video/install-and-licence.mp4' | relative_url }}">Download it (MP4, 13 MB)</a>.
+      </video>
+    </figure>
+    <p class="video-chapters mono">Download &middot; Install &middot; Get a key &middot; Activate</p>
+    <ol class="steps reveal">
+      <li><strong>Download the installer</strong> from the <a href="{{ '/downloads/' | relative_url }}">Downloads page</a> (about 127 MB, everything bundled).</li>
+      <li><strong>Run it.</strong> Windows may warn that the publisher is unknown, because the installer is not code-signed yet. Check the file name, then click Run (or More info, then Run anyway). <a href="{{ '/downloads/' | relative_url }}#smartscreen">Why Windows warns, and how to check the file</a>.</li>
+      <li><strong>Click through the installer:</strong> accept the licence agreement and keep the default folder. No administrator rights are needed.</li>
+      <li><strong>Get a free licence key</strong> on the <a href="{{ '/licence/' | relative_url }}">licence page</a>. It is emailed to you in a few seconds. Free, no expiry, every feature included.</li>
+      <li><strong>Start the app</strong>, enter the same email and the key, and click Activate. It opens with the examples ready.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="model">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">// Before you start</p>
-      <h2 class="section-title">How the pieces fit together</h2>
-      <p class="section-lede">A simulation combines a <strong>pack</strong> (built from one <strong>cell</strong>) with a <strong>simulation cycle</strong> (the load it sees, day by day). The load is built in four levels, so nothing is duplicated.</p>
+      <p class="eyebrow">// Part 2 &middot; Your first simulation</p>
+      <h2 class="section-title">Your first simulation, step by step</h2>
+      <p class="section-lede">Each step builds a reusable piece of your library, so the next study starts further along. A simulation combines a <strong>pack</strong> (built from one <strong>cell</strong>) with a <strong>simulation cycle</strong> (the load it sees, day by day). The load is built in four levels, so nothing is duplicated.</p>
     </div>
     <ol class="hierarchy reveal">
       <li><span class="mono">STEPS</span><strong>Sequence</strong><small>Current, power or rest steps, e.g. 1 C discharge to 3.0 V</small></li>
@@ -45,7 +74,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
           <p>A cell holds its identity, dimensions and voltage limits. Fill in the name, nominal voltage and capacity first. Then add a <strong>configuration</strong>: the physics to run it with.</p>
           <ul class="checks">
             <li>{% include icon.html name="check" px=18 %}<span><strong>Circuit model:</strong> download the RC template CSV, fill in your measured SOC, OCV, R0 and RC values for each temperature, and upload it. It is checked as it uploads.</span></li>
-            <li>{% include icon.html name="check" px=18 %}<span><strong>Electrochemical model</strong> (with the <a href="{{ '/features/electrochemical/' | relative_url }}">add-on</a>): enter the cell&rsquo;s electrochemical parameter block, and record where the values came from.</span></li>
+            <li>{% include icon.html name="check" px=18 %}<span><strong>Electrochemical model</strong> (with the <a href="{{ '/features/' | relative_url }}#engines">add-on</a>): enter the cell&rsquo;s electrochemical parameter block, and record where the values came from.</span></li>
           </ul>
           <div class="callout"><p><strong>Common mistake:</strong> RC data at only one temperature. The solver interpolates between temperatures, so a single point gives wrong results elsewhere. If that is all you have, set a generous temperature extrapolation tolerance.</p></div>
           {% include shot.html id="cell-builder" %}
@@ -111,7 +140,160 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
   </div>
 </section>
 
-<section class="section" id="faq">
+<section class="section" id="tour">
+  <div class="wrap wrap--narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Part 3 &middot; 3 min 33 s</p>
+      <h2 class="section-title">A tour of the app</h2>
+      <p class="section-lede">Every screen, one at a time: cells, packs, the scenario builder, simulations and results, then help and settings.</p>
+    </div>
+    <figure class="frame video-frame">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">A tour of the app</span></div>
+      <video controls preload="none" playsinline width="1920" height="1080" poster="{{ '/assets/video/ui-tour.jpg' | relative_url }}">
+        <source src="{{ '/assets/video/ui-tour.mp4' | relative_url }}" type="video/mp4">
+        Your browser can't play this video. <a href="{{ '/assets/video/ui-tour.mp4' | relative_url }}">Download it (MP4, 22 MB)</a>.
+      </video>
+    </figure>
+    <p class="video-chapters mono">Layout &middot; Cells &middot; Packs &middot; Scenarios &middot; Simulations &middot; Results &middot; Help &amp; settings</p>
+  </div>
+</section>
+
+<section class="section section--panel" id="examples">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Part 4 &middot; 8 short videos</p>
+      <h2 class="section-title">Play with the examples</h2>
+      <p class="section-lede">The app comes with ready-made examples: 2 cells, 4 packs, 6 load cycles and 5 finished runs. Open them without building anything, then change one thing and run again. Begin with &ldquo;Start here&rdquo;.</p>
+    </div>
+    <div class="video-grid">
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-0.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-0.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-0.mp4' | relative_url }}">Download it (MP4, 14 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">00 &middot; 1:48</span>
+          <h3>Start here</h3>
+          <p>The examples that come with the app, and how to play with them.</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-1.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-1.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-1.mp4' | relative_url }}">Download it (MP4, 10 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">01 &middot; 1:22</span>
+          <h3>Example 1: one cell</h3>
+          <p>Read a CCCV result. Change the temperature. Let the cell heat itself.</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-2.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-2.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-2.mp4' | relative_url }}">Download it (MP4, 13 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">02 &middot; 1:27</span>
+          <h3>Example 2: a recorded drive</h3>
+          <p>A real highway drive, second by second. Then three things to try.</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-3.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-3.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-3.mp4' | relative_url }}">Download it (MP4, 9 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">03 &middot; 1:14</span>
+          <h3>Example 3: one weak cell</h3>
+          <p>Four cells in parallel, one of them weaker. Who carries what?</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-4.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-4.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-4.mp4' | relative_url }}">Download it (MP4, 13 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">04 &middot; 1:24</span>
+          <h3>Example 4: the heat</h3>
+          <p>32 air-cooled cells through a hard day. Where does the heat build?</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-5.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-5.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-5.mp4' | relative_url }}">Download it (MP4, 8 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">05 &middot; 1:05</span>
+          <h3>Example 5: electrochemistry</h3>
+          <p>The same module on three PyBaMM models. What does each one add?</p>
+          <p class="video-card-note">Re-running it needs the <a href="#addon">add-on</a>; the finished run opens without it.</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-6.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-6.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-6.mp4' | relative_url }}">Download it (MP4, 13 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">06 &middot; 1:44</span>
+          <h3>Ten years, step by step</h3>
+          <p>How the 10-year example is built, and what to check before a long run.</p>
+        </figcaption>
+      </figure>
+      <figure class="video-card reveal">
+        <video controls preload="none" playsinline width="1280" height="720" poster="{{ '/assets/video/examples/example-7.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/examples/example-7.mp4' | relative_url }}" type="video/mp4">
+          <a href="{{ '/assets/video/examples/example-7.mp4' | relative_url }}">Download it (MP4, 9 MB)</a>.
+        </video>
+        <figcaption>
+          <span class="mono">07 &middot; 1:13</span>
+          <h3>Can you fix it?</h3>
+          <p>In Example 3 one weak cell carries less. Make all four share evenly.</p>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="muted small center">Music in the videos on this page: Sascha Ende, ende.app (CC BY 4.0).</p>
+  </div>
+</section>
+
+<section class="section" id="addon">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">// Part 5 &middot; Optional</p>
+      <h2 class="section-title">Install the Electrochemical Models Add-On</h2>
+      <p class="section-lede">Four PyBaMM-based cell engines (Thevenin, SPM, SPMe and DFN), free with any licence. <a href="{{ '/features/' | relative_url }}#engines">What the add-on does</a>.</p>
+    </div>
+  </div>
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <h3>From inside the app</h3>
+      <ol class="steps">
+        <li><strong>Open Settings &rarr; About</strong> in Battery Sim Suite.</li>
+        <li><strong>Click Install.</strong> The app downloads the add-on and checks it before unpacking.</li>
+        <li><strong>Pick an engine</strong> when you set up a simulation.</li>
+      </ol>
+      <p class="muted">The app refuses any file whose size, checksum or listing does not match.</p>
+    </div>
+    <div class="split-copy reveal">
+      <h3>No internet? Install from a file</h3>
+      <ol class="steps">
+        <li><strong>On a connected computer</strong>, download the add-on zip and its <code>.json</code> listing from the <a href="{{ '/downloads/' | relative_url }}#addon">Downloads page</a>.</li>
+        <li><strong>Copy both files</strong> to the offline computer.</li>
+        <li><strong>Choose Install from file</strong> in Settings &rarr; About and select both.</li>
+      </ol>
+      <p class="muted">The add-on is not code-signed. The SHA-256 checksums on the Downloads page are how to confirm a copy is genuine.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="shot-row reveal">{% include shot.html id="addon-install" %}<p class="muted">Settings &rarr; About shows whether the add-on is installed, its version, and Install or Uninstall. Updates to the app keep an installed add-on.</p></div>
+  </div>
+</section>
+
+<section class="section section--panel" id="faq">
   <div class="wrap wrap--narrow">
     <div class="section-head reveal">
       <p class="eyebrow">// FAQ</p>
@@ -136,7 +318,7 @@ hero_lede: From a fresh install to your first result. Each step builds a reusabl
       </details>
       <details>
         <summary>Which model should I start with?</summary>
-        <p>The built-in equivalent-circuit model: it is the fastest and needs only RC tables. Move to SPM, SPMe or DFN when you need diffusion limits, electrolyte effects or ageing. See <a href="{{ '/features/electrochemical/' | relative_url }}">the engines</a>.</p>
+        <p>The built-in equivalent-circuit model: it is the fastest and needs only RC tables. Move to SPM, SPMe or DFN when you need diffusion limits, electrolyte effects or ageing. See <a href="{{ '/features/' | relative_url }}#engines">the engines</a>.</p>
       </details>
       <details>
         <summary>Is every loss counted as heat?</summary>
