@@ -9,5 +9,8 @@
       <a class="btn btn-charge btn-lg" href="{{ '/downloads/' | relative_url }}">{% include icon.html name="download" px=18 %}Download for Windows</a>
       <a class="btn btn-ghost btn-lg" href="{{ '/licence/' | relative_url }}">{% include icon.html name="key" px=18 %}Get a free licence key</a>
     </div>
+    {%- unless page.url == '/guide/' %}
+    <p class="cta-guide"><a class="link-arrow" href="{{ '/guide/' | relative_url }}">New here? Read the getting-started guide {% include icon.html name="arrow" px=14 %}</a></p>
+    {%- endunless %}
   </div>
 </section>

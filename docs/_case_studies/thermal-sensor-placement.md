@@ -33,7 +33,7 @@ be estimated.
 All of the temperature data came from pack simulations in Battery Sim Suite.
 
 - **Pack:** 12 in series, 16 in parallel: 192 LG M50T 21700 cells on a 23 mm pitch in one layer, air-cooled.
-- **Cell model:** PyBaMM's single-particle model (SPM) with SEI ageing and the OKane2022 parameter set, run through the [Electrochemical Models Add-On]({{ '/features/electrochemical/' | relative_url }}). At every time step the cell model takes current and temperature and returns voltage, heat, state of charge and capacity lost to SEI growth.
+- **Cell model:** PyBaMM's single-particle model (SPM) with SEI ageing and the OKane2022 parameter set, run through the [Electrochemical Models Add-On]({{ '/features/' | relative_url }}#engines). At every time step the cell model takes current and temperature and returns voltage, heat, state of charge and capacity lost to SEI growth.
 - **Pack thermal model:** cell-to-cell heat links (30 K/W), cooling to the air (10–15 K/W) and a 25 °C ambient.
 - **Cell differences:** a production spread drawn from measured LG M50T data (resistance σ 2.4 %, capacity σ 0.45 %), plus five deliberately bad cells in some runs: three with 1.6× resistance and two with 85 % capacity.
 - **Duties:** an aggressive 1.5C cycle over 3 days, and a residential solar home-battery day repeated for 15 days.

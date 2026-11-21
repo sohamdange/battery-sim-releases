@@ -200,6 +200,10 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(3px);
 }
 .hero-lede { font-size: 18px; color: var(--muted); max-width: 540px; margin: 24px 0 0; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin: 24px 0 0; font-size: 13px; color: var(--dim); }
+.hero-guide { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 28px 0 0; }
+.hero-guide-sep { color: var(--dim); }
+.cta-guide { margin: 22px 0 0; text-align: center; }
+@media (max-width: 640px) { .hero-guide-sep { display: none; } .hero-guide { flex-direction: column; align-items: flex-start; } }
 .pill { display: inline-flex; align-items: center; gap: 8px; color: var(--text); border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 12px; }
 .pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 0 var(--lime-ring); animation: pulse 2.4s infinite; }
 .hero-visual { position: relative; }
@@ -616,9 +620,19 @@ td code { font-size: 12px; word-break: break-all; }
 .shot-placeholder .mono { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .shot-row { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px; align-items: center; margin-top: 48px; }
 .shot-row > p { margin: 0; }
+.addon-facts { margin-top: 48px; }
 .guide-step .shot { margin-top: 24px; }
 @media (max-width: 920px) { .shot-row { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
 
 /* ---------- Videos page: a video in the same window frame as the screenshots ---------- */
 .video-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
 .video-chapters { margin-top: 14px; font-size: 13px; letter-spacing: .04em; color: var(--dim); }
+.video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-bottom: 32px; }
+.video-card { margin: 0; background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--radius-lg); overflow: hidden; }
+.video-card video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+.video-card figcaption { padding: 18px 22px 22px; }
+.video-card figcaption .mono { font-size: 12px; letter-spacing: .06em; color: var(--lime); }
+.video-card h3 { margin: 6px 0; }
+.video-card p { margin: 0; color: var(--muted); }
+.video-card .video-card-note { margin-top: 10px; font-size: 14px; color: var(--dim); }
+@media (max-width: 760px) { .video-grid { grid-template-columns: 1fr; } }

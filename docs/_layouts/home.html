@@ -17,15 +17,19 @@ layout: default
         and ageing, with equivalent-circuit or electrochemical engines, entirely on your own computer.
       </p>
       <div class="actions">
-        <a class="btn btn-charge btn-lg" href="{{ '/downloads/' | relative_url }}">
+        <a class="btn btn-charge btn-lg" data-rel="app-download" href="{{ '/downloads/' | relative_url }}">
           {% include icon.html name="download" px=18 %}Download for Windows
         </a>
-        <a class="btn btn-ghost btn-lg" href="{{ '/features/' | relative_url }}">Explore features {% include icon.html name="arrow" px=16 %}</a>
+        <a class="btn btn-ghost btn-lg" href="{{ '/licence/' | relative_url }}">{% include icon.html name="key" px=18 %}Get a free licence key</a>
       </div>
+      <p class="hero-guide">
+        <a class="link-arrow" href="{{ '/guide/' | relative_url }}">New here? Follow the getting-started guide {% include icon.html name="arrow" px=14 %}</a>
+        <span class="hero-guide-sep" aria-hidden="true">&middot;</span>
+        <a class="link-arrow" href="{{ '/features/' | relative_url }}">Explore features {% include icon.html name="arrow" px=14 %}</a>
+      </p>
       <p class="hero-meta mono">
         <span class="pill"><span class="pill-dot"></span><span data-rel="app-version">Latest release</span></span>
         <span>Windows 10 / 11 &middot; 64-bit</span>
-        <span>Free licence key</span>
       </p>
     </div>
 
@@ -118,7 +122,7 @@ layout: default
         <li>{% include icon.html name="check" px=18 %}Every download checked against its size and SHA-256 checksum</li>
       </ul>
       <div class="actions">
-        <a class="btn btn-charge" href="{{ '/features/electrochemical/' | relative_url }}">Meet the engines {% include icon.html name="arrow" px=16 %}</a>
+        <a class="btn btn-charge" href="{{ '/features/' | relative_url }}#engines">Meet the engines {% include icon.html name="arrow" px=16 %}</a>
         <a class="btn btn-ghost" href="{{ '/downloads/' | relative_url }}#addon">Get the add-on</a>
       </div>
     </div>
