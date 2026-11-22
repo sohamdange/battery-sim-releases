@@ -5,6 +5,8 @@ main:
     url: /features/
   - title: Downloads
     url: /downloads/
+  - title: Knowledge Hub
+    url: /knowledge-hub/
   - title: Case studies
     url: /case-studies/
   - title: Contact

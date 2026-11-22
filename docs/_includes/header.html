@@ -13,7 +13,7 @@
         {%- for item in site.data.nav.main %}
         {%- if item.url == '/case-studies/' and site.show_case_studies != true %}{% continue %}{% endif %}
         {%- assign item_url = item.url | relative_url %}
-        <li><a href="{{ item_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        <li><a href="{{ item_url }}"{% if page.url == item.url or page.parent_url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
         {%- endfor %}
       </ul>
       <a class="btn btn-charge btn-sm" data-rel="app-download" href="{{ '/downloads/' | relative_url }}" title="Download the latest Battery Sim Suite installer for Windows">

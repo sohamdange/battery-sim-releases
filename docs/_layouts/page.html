@@ -5,6 +5,13 @@ layout: default
 <section class="page-hero">
   <div class="circuit-bg" aria-hidden="true"></div>
   <div class="wrap">
+    {%- if page.parent_url %}
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ page.parent_url | relative_url }}">{{ page.parent_title }}</a>
+      <span aria-hidden="true">/</span>
+      <span>{{ page.title }}</span>
+    </nav>
+    {%- endif %}
     {%- if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
     <h1 class="page-title">{{ page.hero_title }}</h1>
     {%- if page.hero_lede %}<p class="page-lede">{{ page.hero_lede }}</p>{% endif %}
