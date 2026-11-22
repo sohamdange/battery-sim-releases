@@ -1,0 +1,45 @@
+---
+title: Simulation models
+description: Battery models explained with one real cell - open-circuit voltage, R0 and RC pairs, then the SPM, SPMe and DFN electrochemical models, and when to use each.
+parent_title: Knowledge Hub
+parent_url: /knowledge-hub/
+eyebrow: "// 2 min 43 s"
+hero_title: Battery models, explained
+hero_lede: The ladder from a simple circuit to full electrochemistry, drawn from one real cell's data and runs in Battery Sim Suite.
+---
+<section class="section section--tight">
+  <div class="wrap wrap--narrow">
+    <figure class="frame video-frame">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">Battery models, explained</span></div>
+      <video controls preload="none" playsinline width="1920" height="1080" poster="{{ '/assets/video/models-explained.jpg' | relative_url }}">
+        <source src="{{ '/assets/video/models-explained.mp4' | relative_url }}" type="video/mp4">
+        Your browser can't play this video. <a href="{{ '/assets/video/models-explained.mp4' | relative_url }}">Download it (MP4, 11 MB)</a>.
+      </video>
+    </figure>
+    <p class="video-chapters mono">OCV &middot; R0 &middot; RC pairs &middot; Lookup tables &middot; Inside the cell &middot; SPM &middot; SPMe &middot; DFN</p>
+
+    <div class="section-head reveal">
+      <h2 class="section-title">What the video covers</h2>
+    </div>
+    <ol class="steps reveal">
+      <li><strong>Open-circuit voltage:</strong> what the cell reads at rest, set by how full it is.</li>
+      <li><strong>R0:</strong> the instant drop when current flows. At 90 % SOC, 13 m&Omega; &times; 5 A = 65 mV straight away.</li>
+      <li><strong>RC pairs:</strong> the slow part. After the current stops the voltage jumps back 89 mV, then creeps up another 26 mV over ten minutes.</li>
+      <li><strong>Lookup tables:</strong> all of it is tabulated by SOC and temperature. R0 falls from 16.5 m&Omega; at 5 &deg;C to 5.6 m&Omega; at 55 &deg;C.</li>
+      <li><strong>Inside the cell:</strong> lithium leaves the graphite particles, crosses the electrolyte and enters the cathode.</li>
+      <li><strong>SPM:</strong> one average particle per electrode.</li>
+      <li><strong>SPMe:</strong> adds the salt concentration in the electrolyte.</li>
+      <li><strong>DFN:</strong> particles all through each electrode, coupled to the electrolyte.</li>
+    </ol>
+    <div class="callout reveal"><p><strong>Same cell, same cycle:</strong> RC took 0.7 s, SPM 6.3 s, SPMe 10.5 s and DFN 22.9 s, and SPMe landed within 8 mV of DFN. The RC model uses the cell&rsquo;s lab-fitted table and the others the published Chen2020 parameters, so part of RC&rsquo;s gap is the data. Pick the model that fits the question.</p></div>
+    <p class="actions">
+      <a class="btn btn-ghost" href="{{ '/features/' | relative_url }}#engines">Compare the engines {% include icon.html name="arrow" px=16 %}</a>
+      <a class="btn btn-ghost" href="{{ '/guide/' | relative_url }}#addon">Install the add-on {% include icon.html name="arrow" px=16 %}</a>
+    </p>
+    <div class="credits muted small">
+      <p>Music: Sascha Ende, ende.app (CC BY 4.0). Electrochemical parameters: Chen et al., J. Electrochem. Soc. 167 (2020) 080534.</p>
+    </div>
+  </div>
+</section>
+
+{% include cta.html %}

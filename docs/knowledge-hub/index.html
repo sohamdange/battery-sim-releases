@@ -1,0 +1,47 @@
+---
+title: Knowledge Hub
+description: Learn Battery Sim Suite - tips and tricks videos, simulation models explained, the getting-started guide, example walkthroughs and case studies.
+eyebrow: "// Knowledge Hub"
+hero_title: Knowledge Hub
+hero_lede: Everything for learning Battery Sim Suite in one place, from one-minute tips to how each battery model works.
+---
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="cards cards--3">
+      <a class="card card--link reveal" href="{{ '/knowledge-hub/tips/' | relative_url }}">
+        <span class="card-icon">{% include icon.html name="bolt" %}</span>
+        <h2 class="h3">Tips &amp; tricks</h2>
+        <p>Six short videos, under 20 seconds each: one feature, one task, start to finish.</p>
+        <span class="link-arrow">Watch the tips {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="{{ '/knowledge-hub/simulation-models/' | relative_url }}">
+        <span class="card-icon">{% include icon.html name="flask" %}</span>
+        <h2 class="h3">Simulation models</h2>
+        <p>From a simple circuit to full electrochemistry: what RC, SPM, SPMe and DFN each model, explained in under three minutes.</p>
+        <span class="link-arrow">Watch the explainer {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="{{ '/guide/' | relative_url }}">
+        <span class="card-icon">{% include icon.html name="list" %}</span>
+        <h2 class="h3">Getting started</h2>
+        <p>Install the app, activate your free licence and run your first simulation, step by step.</p>
+        <span class="link-arrow">Open the guide {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+      <a class="card card--link reveal" href="{{ '/guide/' | relative_url }}#examples">
+        <span class="card-icon">{% include icon.html name="chart" %}</span>
+        <h2 class="h3">Example walkthroughs</h2>
+        <p>Eight videos on the examples that come with the app: read a result, then change one thing and run it.</p>
+        <span class="link-arrow">Watch the examples {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+{%- if site.show_case_studies %}
+      <a class="card card--link reveal" href="{{ '/case-studies/' | relative_url }}">
+        <span class="card-icon">{% include icon.html name="doc" %}</span>
+        <h2 class="h3">Case studies</h2>
+        <p>How engineers and researchers use Battery Sim Suite on real questions.</p>
+        <span class="link-arrow">Read the case studies {% include icon.html name="arrow" px=14 %}</span>
+      </a>
+{%- endif %}
+    </div>
+  </div>
+</section>
+
+{% include cta.html %}
